@@ -47,21 +47,6 @@
 
     </p>
 </div>
-<div class="person_dev">
-<h2>Dylan Gomes</h2>
-<img class="profilepicture" src="images/picture.jpg" />
-<p> Geboortedatum: 28 juli 1992</p>
-<p>
-E-mail: Dylan.Gomes@student.pxl.be
-</p>
-<img class="logo" src="images/facebook.png" />
-    <img class="logo" src="images/linkedin.png" />
-    <img class="logo" src="images/skype.png" />
-    <p>
-        Over mezelf: <br>
-
-    </p>
-</div>
 
 </body>
 </html>
