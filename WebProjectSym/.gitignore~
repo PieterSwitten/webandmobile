@@ -1,5 +1,6 @@
 /app/config/parameters.yml
 /build/
+/bin/
 /composer.phar
 /vendor/
 /web/bundles/
