@@ -101,7 +101,13 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return $this->type;
+       if ($this->type =='1') {
+           return 'ROLE_ADMIN';
+       } else if ($this == '2') {
+           return 'ROLE_DOKTOR';
+       } else if ($this == '3') {
+           return 'ROLE_USER';
+       }
     }
 
     public function getPassword()

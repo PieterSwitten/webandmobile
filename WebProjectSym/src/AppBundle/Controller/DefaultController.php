@@ -44,6 +44,7 @@ class DefaultController extends Controller
     public function loginCheckAction()
     {
         // NB hier geen code: het framework voorziet de controles/acties
+        return new Response("Fout<br/>");
     }
     /**
      * @Route("/quit", name="quitroute")
