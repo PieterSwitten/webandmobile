@@ -9,6 +9,10 @@ security:
             class: AppBundle:User
             property: email
 
+    access_control:
+      - { path: ^/adminpage, roles: ROLE_ADMIN }
+      - { path: ^/userpage, roles: [ROLE_ADMIN, ROLE_USER] }
+
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
