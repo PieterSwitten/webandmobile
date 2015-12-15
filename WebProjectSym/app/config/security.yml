@@ -6,7 +6,7 @@ security:
     providers:
         db_provider:
           entity:
-            class: AppBundle:Users
+            class: AppBundle:User
             property: email
 
     firewalls:
