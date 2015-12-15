@@ -1,0 +1,65 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', '-g', 'bowerphp' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose cache add [ 'bowerphp', null ]
+5 verbose cache add name=undefined spec="bowerphp" args=["bowerphp",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'bowerphp',
+6 verbose parsed url   path: 'bowerphp',
+6 verbose parsed url   href: 'bowerphp' }
+7 silly lockFile 547d4fcd-bowerphp bowerphp
+8 verbose lock bowerphp /home/pieter/.npm/547d4fcd-bowerphp.lock
+9 silly lockFile 547d4fcd-bowerphp bowerphp
+10 silly lockFile 547d4fcd-bowerphp bowerphp
+11 verbose addNamed [ 'bowerphp', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 97224237-bowerphp bowerphp@
+14 verbose lock bowerphp@ /home/pieter/.npm/97224237-bowerphp.lock
+15 silly addNameRange { name: 'bowerphp', range: '*', hasData: false }
+16 verbose url raw bowerphp
+17 verbose url resolving [ 'https://registry.npmjs.org/', './bowerphp' ]
+18 verbose url resolved https://registry.npmjs.org/bowerphp
+19 info trying registry request attempt 1 at 11:26:55
+20 http GET https://registry.npmjs.org/bowerphp
+21 http 404 https://registry.npmjs.org/bowerphp
+22 silly registry.get cb [ 404,
+22 silly registry.get   { 'content-type': 'application/json',
+22 silly registry.get     'cache-control': 'max-age=0',
+22 silly registry.get     'content-length': '2',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     date: 'Tue, 15 Dec 2015 10:26:56 GMT',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     age: '0',
+22 silly registry.get     connection: 'keep-alive',
+22 silly registry.get     'x-served-by': 'cache-fra1222-FRA',
+22 silly registry.get     'x-cache': 'MISS',
+22 silly registry.get     'x-cache-hits': '0',
+22 silly registry.get     'x-timer': 'S1450175216.082253,VS0,VE187' } ]
+23 silly addNameRange number 2 { name: 'bowerphp', range: '*', hasData: true }
+24 silly addNameRange versions [ undefined, [] ]
+25 error TypeError: Cannot read property 'latest' of undefined
+25 error     at next (/usr/share/npm/lib/cache.js:687:35)
+25 error     at /usr/share/npm/lib/cache.js:675:5
+25 error     at saved (/usr/share/npm/node_modules/npm-registry-client/lib/get.js:142:7)
+25 error     at /usr/lib/nodejs/graceful-fs/polyfills.js:133:7
+25 error     at Object.oncomplete (fs.js:107:15)
+26 error If you need help, you may report this log at:
+26 error     <http://github.com/isaacs/npm/issues>
+26 error or email it to:
+26 error     <npm-@googlegroups.com>
+27 error System Linux 3.13.0-70-generic
+28 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "bowerphp"
+29 error cwd /home/pieter/gitrepos/WebProjectSym
+30 error node -v v0.10.25
+31 error npm -v 1.3.10
+32 error type non_object_property_load
+33 verbose exit [ 1, true ]
