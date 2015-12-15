@@ -30,9 +30,6 @@ class DefaultController extends Controller
     {
         return new Response("userpage<br/>");
     }
-    //HAHAHAHAHAAHAHH TEST
-    // TEST TEST
-    //TEST
     /**
      * @Route("/login", name="loginroute")
      */
