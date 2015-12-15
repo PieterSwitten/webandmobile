@@ -7,8 +7,5 @@
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
 /phpunit.xml
-/.idea/workspace.xml
-.idea/workspace.xml
-idea/workspace.xml
-/idea/workspace.xml
+\.idea/workspace.xml
 
