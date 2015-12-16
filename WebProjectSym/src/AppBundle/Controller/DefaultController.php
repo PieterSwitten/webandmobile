@@ -2,9 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Users;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -28,7 +30,7 @@ class DefaultController extends Controller
      */
     public function userAction(Request $request)
     {
-        return new Response("userpage<br/>");
+        return new Response("userpage:<br/>");
     }
     /**
      * @Route("/login", name="loginroute")
@@ -52,6 +54,27 @@ class DefaultController extends Controller
     public function quitAction(Request $request)
     {
         // NB hier geen code: het framework voorziet de acties
+    }
+
+    /**
+     * @Route("/makeusers")
+     */
+    public function makeUsersAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = new Users();
+        $user->setUserName('Dylan');
+        $user->setRoleString(
+            'ROLE_ADMIN ROLE_USER');
+        $password = '216692';
+        $encoder = $this->container->
+        get('security.password_encoder');
+        $encoded = $encoder->encodePassword($user,
+            $password);
+        $user->setUserPassword($encoded);
+        $em->persist($user);
+        $em->flush();
+        return new Response('Created user');
     }
 
 }

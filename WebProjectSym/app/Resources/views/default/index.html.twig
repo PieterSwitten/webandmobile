@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Login</h1>
     <p>Ingelogd als
-        {{ app.user  }}
+        {{ app.User  }}
         {% if is_granted('ROLE_ADMIN') %}
             (ADMIN)
         {% elseif is_granted('ROLE_USER') %}
