@@ -36,9 +36,9 @@ class Users implements UserInterface, \Serializable
     public function serialize()
     {
         return serialize(array(
-            $this->id,
+            $this->userId,
             $this->userName,
-            $this->password,
+            $this->userPassword,
             $this->roleString
         ));
     }

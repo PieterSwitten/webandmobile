@@ -5,7 +5,7 @@ security:
             class: AppBundle:Users
             property: userName
     encoders:
-        AppBundle\Entity\User:
+        AppBundle\Entity\Users:
           algorithm: bcrypt
     firewalls:
         dev:

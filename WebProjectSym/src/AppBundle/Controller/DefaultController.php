@@ -23,7 +23,7 @@ class DefaultController extends Controller
      */
     public function adminAction(Request $request)
     {
-        return new Response("adminpage<br/>");
+        return new Response("Hello<br/>");
     }
     /**
      * @Route("/userpage", name="userroute")
