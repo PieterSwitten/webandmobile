@@ -26,7 +26,7 @@ class DefaultController extends Controller
         return new Response("Hello<br/>");
     }
     /**
-     * @Route("/userpage", name="userroute")
+     * @Route("/user", name="userroute")
      */
     public function userAction(Request $request)
     {
@@ -63,10 +63,10 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = new Users();
-        $user->setUserName('Dylan');
+        $user->setUserName('admin');
         $user->setRoleString(
             'ROLE_ADMIN ROLE_USER');
-        $password = '216692';
+        $password = 'a1';
         $encoder = $this->container->
         get('security.password_encoder');
         $encoded = $encoder->encodePassword($user,
