@@ -1,24 +1,24 @@
 security:
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+            logout:
+                 path: /quit
+                 target: /
+
+    access_control:
+        - { path: ^/adminpage, roles: ROLE_ADMIN }
+        - { path: ^/userpage, roles: [ROLE_ADMIN,ROLE_USER] }
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
     providers:
         db_provider:
-          entity:
-            class: AppBundle:Users
-            property: userName
-    encoders:
-        AppBundle\Entity\Users:
-          algorithm: bcrypt
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        default:
-            anonymous: true
-            form_login:
-              login_path: /login
-              check_path: /login_check
-            logout:
-              path: /quit
-              target: /
-    access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/user, roles: [ROLE_ADMIN,ROLE_USER] }
+            entity:
+                class: AppBundle:User
+                property: userName

@@ -3,12 +3,12 @@
 
 {% block body %}
     <form action="{{ path('checkroute') }}" method="post">
-        <label for="userName">userName</label>
-        <input type="text" id="userName"
-               name="_userName" />
-        <label for="userPassword">userPassword</label>
-        <input type="password" id="userPassword"
-               name="_userPassword" />
+        <label for="username">Username:</label>
+        <input type="text" id="username"
+               name="_username" />
+        <label for="password">Password:</label>
+        <input type="password" id="password"
+               name="_password" />
         <input type="submit" name="login" />
     </form>
 {% endblock %}
