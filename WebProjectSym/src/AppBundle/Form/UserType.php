@@ -20,6 +20,7 @@ class UserType extends AbstractType
         $builder
             ->add('userName')
             ->add('password')
+            ->add('captcha', 'captcha')
             ->add('save', SubmitType::class, array('label' => 'New User'))
         ;
     }

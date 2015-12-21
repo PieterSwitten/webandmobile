@@ -440,7 +440,6 @@ class LimitSubqueryOutputWalker extends SqlWalker
                 $otherClassMetadata = $this->em->getClassMetadata($fieldMapping['declared']);
                 if (!$otherClassMetadata->isMappedSuperclass) {
                     $sqlTableAliasForFieldAlias = $this->getSQLTableAlias($otherClassMetadata->getTableName(), $dqlAliasForFieldAlias);
-                    
                 }
             }
 
