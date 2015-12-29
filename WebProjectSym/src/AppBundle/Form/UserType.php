@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotNull;
 
@@ -20,6 +21,7 @@ class UserType extends AbstractType
         $builder
             ->add('userName')
             ->add('password')
+            ->add('captcha', 'Gregwar\CaptchaBundle\Type\CaptchaType')
             ->add('save', SubmitType::class, array('label' => 'New User'))
         ;
     }
