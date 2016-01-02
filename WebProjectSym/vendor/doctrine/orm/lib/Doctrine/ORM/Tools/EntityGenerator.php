@@ -157,13 +157,15 @@ class EntityGenerator
         Type::DATE          => '\DateTime',
         Type::TIME          => '\DateTime',
         Type::OBJECT        => '\stdClass',
-        Type::BIGINT        => 'integer',
-        Type::SMALLINT      => 'integer',
+        Type::INTEGER       => 'int',
+        Type::BIGINT        => 'int',
+        Type::SMALLINT      => 'int',
         Type::TEXT          => 'string',
         Type::BLOB          => 'string',
         Type::DECIMAL       => 'string',
         Type::JSON_ARRAY    => 'array',
         Type::SIMPLE_ARRAY  => 'array',
+        Type::BOOLEAN       => 'bool',
     );
 
     /**
@@ -277,10 +279,12 @@ public function <methodName>(<methodTypeHint>$<variableName>)
  * <description>
  *
  * @param <variableType> $<variableName>
+ *
+ * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
  */
 public function <methodName>(<methodTypeHint>$<variableName>)
 {
-<spaces>$this-><fieldName>->removeElement($<variableName>);
+<spaces>return $this-><fieldName>->removeElement($<variableName>);
 }';
 
     /**
@@ -1096,6 +1100,7 @@ public function __construct(<params>)
             }
             $annotations[] = '@' . $this->annotationsPrefix . $constraintName . '(name="' . $name . '", columns={' . implode(', ', $columns) . '})';
         }
+
         return implode(', ', $annotations);
     }
 
@@ -1237,7 +1242,7 @@ public function __construct(<params>)
         }
 
         foreach ($joinColumns as $joinColumn) {
-            if(isset($joinColumn['nullable']) && !$joinColumn['nullable']) {
+            if (isset($joinColumn['nullable']) && !$joinColumn['nullable']) {
                 return false;
             }
         }
@@ -1651,8 +1656,14 @@ public function __construct(<params>)
                 $column[] = 'nullable=' .  var_export($fieldMapping['nullable'], true);
             }
 
-            if (isset($fieldMapping['unsigned']) && $fieldMapping['unsigned']) {
-                $column[] = 'options={"unsigned"=true}';
+            $options = [];
+
+            if (isset($fieldMapping['options']['unsigned']) && $fieldMapping['options']['unsigned']) {
+                $options[] = '"unsigned"=true';
+            }
+
+            if ($options) {
+                $column[] = 'options={'.implode(',', $options).'}';
             }
 
             if (isset($fieldMapping['columnDefinition'])) {
@@ -1801,12 +1812,14 @@ public function __construct(<params>)
      * Exports (nested) option elements.
      *
      * @param array $options
+     *
+     * @return string
      */
     private function exportTableOptions(array $options)
     {
         $optionsStr = array();
 
-        foreach($options as $name => $option) {
+        foreach ($options as $name => $option) {
             if (is_array($option)) {
                 $optionsStr[] = '"' . $name . '"={' . $this->exportTableOptions($option) . '}';
             } else {

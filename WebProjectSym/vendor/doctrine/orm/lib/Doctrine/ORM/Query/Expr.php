@@ -389,7 +389,7 @@ class Expr
      *
      *     [php]
      *     // u.numChildren + 1
-     *     $q->expr()->diff('u.numChildren', '1')
+     *     $q->expr()->sum('u.numChildren', '1')
      *
      * @param mixed $x Left expression.
      * @param mixed $y Right expression.
@@ -449,6 +449,7 @@ class Expr
                 }
             }
         }
+
         return new Expr\Func($x . ' IN', (array) $y);
     }
 
@@ -456,7 +457,7 @@ class Expr
      * Creates a NOT IN() expression with the given arguments.
      *
      * @param string $x Field in string format to be restricted by NOT IN() function.
-     * @param mixed $y Argument to be used in NOT IN() function.
+     * @param mixed  $y Argument to be used in NOT IN() function.
      *
      * @return Expr\Func
      */
@@ -469,6 +470,7 @@ class Expr
                 }
             }
         }
+
         return new Expr\Func($x . ' NOT IN', (array) $y);
     }
 
@@ -526,13 +528,13 @@ class Expr
      * Creates a CONCAT() function expression with the given arguments.
      *
      * @param mixed $x First argument to be used in CONCAT() function.
-     * @param mixed $y Second argument to be used in CONCAT() function.
+     * @param mixed $y,... Other arguments to be used in CONCAT() function.
      *
      * @return Expr\Func
      */
     public function concat($x, $y)
     {
-        return new Expr\Func('CONCAT', array($x, $y));
+        return new Expr\Func('CONCAT', func_get_args());
     }
 
     /**
@@ -550,6 +552,7 @@ class Expr
         if (null !== $len) {
             $args[] = $len;
         }
+
         return new Expr\Func('SUBSTRING', $args);
     }
 

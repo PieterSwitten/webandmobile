@@ -1,113 +1,46 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: root
+ * Date: 14.12.15
+ * Time: 15:35
+ */
 
 namespace AppBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
- * User
- *
- * @ORM\Table(name="User", indexes={@ORM\Index(name="location", columns={"location"}), @ORM\Index(name="type", columns={"type"})})
+ * @ORM\Table("user")
  * @ORM\Entity
  */
 class User implements UserInterface, \Serializable
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=50, nullable=true)
+     * @ORM\Column(name="userName", type="string", length=255)
      */
-    private $firstname;
+    private $userName;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="lastname", type="string", length=50, nullable=true)
-     */
-    private $lastname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=50, nullable=true)
+     * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="phone_number", type="string", length=20, nullable=true)
+     * @ORM\Column(name="rolesString", type="string", length=255)
      */
-    private $phoneNumber;
+        private $rolesString;
+    //methodes uit UserInterface
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=50, nullable=true)
-     */
-    private $email;
-
-    /**
-     * @var \Location
-     *
-     * @ORM\ManyToOne(targetEntity="Location")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="location", referencedColumnName="id")
-     * })
-     */
-    private $location;
-
-    /**
-     * @var \Usertype
-     *
-     * @ORM\ManyToOne(targetEntity="Usertype")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="type", referencedColumnName="id")
-     * })
-     */
-    private $type;
-
-
-    public function serialize()
+    public function getUserName()
     {
-        return serialize(array(
-            $this->id,
-            $this->email,
-            $this->password,
-            $this->type
-        ));
-    }
-
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->email,
-            $this->password,
-            $this->type
-            ) = $this->unserialize($serialized);
-    }
-
-    public function getRoles()
-    {
-       if ($this->type =='1') {
-           return 'ROLE_ADMIN';
-       } else if ($this == '2') {
-           return 'ROLE_DOKTOR';
-       } else if ($this == '3') {
-           return 'ROLE_USER';
-       }
+        return $this->userName;
     }
 
     public function getPassword()
@@ -115,18 +48,70 @@ class User implements UserInterface, \Serializable
         return $this->password;
     }
 
+    public function eraseCredentials()
+    {
+    }
+
+    public function getRoles()
+    {
+        return split(' ',$this->rolesString);
+    }
+
     public function getSalt()
     {
         return null;
     }
+    //methodes uit Serializable
 
-    public function getUsername()
+    public function serialize()
     {
-        return $this->email;
+        return serialize(array(
+            $this->id,
+            $this->userName,
+            $this->password,
+            $this->rolesString
+        ));
     }
 
-    public function eraseCredentials()
+    public function unserialize($serialized)
     {
+        list (
+            $this->id,
+            $this->user,
+            $this->password,
+            $this->rolesString
+            ) = unserialize($serialized);
+    }
+    //overblijvende getters /setters
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setUserName($userName)
+    {
+        $this->userName = $userName;
+
+        return $this;
+    }
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+    public function setRolesString($rolesString)
+    {
+        $this->rolesString = $rolesString;
+
+        return $this;
+    }
+    public function getRolesString()
+    {
+        return $this->rolesString;
+    }
+    //toString
+    public function __toString()
+    {
+        return "Entity User, username= " . $this->userName;
     }
 }
-
