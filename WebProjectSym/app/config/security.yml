@@ -22,4 +22,4 @@ security:
         db_provider:
             entity:
                 class: AppBundle:User
-                property: userName
+                property: username

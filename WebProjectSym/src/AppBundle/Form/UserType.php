@@ -21,7 +21,7 @@ class UserType extends AbstractType
         $builder
             ->add('userName')
             ->add('password')
-            ->add('captcha', 'Gregwar\CaptchaBundle\Type\CaptchaType')
+            //->add('captcha', 'Gregwar\CaptchaBundle\Type\CaptchaType')
             ->add('save', SubmitType::class, array('label' => 'New User'))
         ;
     }

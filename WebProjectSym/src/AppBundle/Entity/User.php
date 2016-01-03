@@ -1,51 +1,123 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 14.12.15
- * Time: 15:35
- */
 
 namespace AppBundle\Entity;
-use Symfony\Component\Security\Core\User\UserInterface;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
- * @ORM\Table("user")
- * @ORM\Entity
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable
 {
     /**
+     * @var int
+     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
-     * @ORM\Column(name="userName", type="string", length=255)
-     */
-    private $userName;
 
     /**
-     * @ORM\Column(name="password", type="string", length=255)
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
      */
     private $password;
 
     /**
-     * @ORM\Column(name="rolesString", type="string", length=255)
+     * @var string
      */
-        private $rolesString;
-    //methodes uit UserInterface
+    private $rolesstring;
 
-    public function getUserName()
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
     {
-        return $this->userName;
+        $this->username = $username;
+
+        return $this;
     }
 
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set rolesstring
+     *
+     * @param string $rolesstring
+     *
+     * @return User
+     */
+    public function setRolesstring($rolesstring)
+    {
+        $this->rolesstring = $rolesstring;
+
+        return $this;
+    }
+
+    /**
+     * Get rolesstring
+     *
+     * @return string
+     */
+    public function getRolesstring()
+    {
+        return $this->rolesstring;
     }
 
     public function eraseCredentials()
@@ -54,7 +126,7 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return split(' ',$this->rolesString);
+        return split(' ',$this->rolesstring);
     }
 
     public function getSalt()
@@ -67,9 +139,9 @@ class User implements UserInterface, \Serializable
     {
         return serialize(array(
             $this->id,
-            $this->userName,
+            $this->username,
             $this->password,
-            $this->rolesString
+            $this->rolesstring
         ));
     }
 
@@ -79,39 +151,7 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->user,
             $this->password,
-            $this->rolesString
+            $this->rolesstring
             ) = unserialize($serialized);
-    }
-    //overblijvende getters /setters
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-    public function setRolesString($rolesString)
-    {
-        $this->rolesString = $rolesString;
-
-        return $this;
-    }
-    public function getRolesString()
-    {
-        return $this->rolesString;
-    }
-    //toString
-    public function __toString()
-    {
-        return "Entity User, username= " . $this->userName;
     }
 }

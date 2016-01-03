@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ app.user.Username }}</title>
+</head>
+<body>
+<header>
+    <table>
+        <tr>
+            <td>
+                <a href={{ path("artsUrenroute") }}>Beschikbare uren</a>
+            </td>
+            <td>
+                <a href={{ path("artsAfsprakenroute") }}>Afspraken verwijderen</a>
+            </td>
+            <td>
+                <a href={{ path("artsProfileroute") }}> Beheer profiel</a>
+            </td>
+        </tr>
+    </table>
+</header>
+</body>
+</html>

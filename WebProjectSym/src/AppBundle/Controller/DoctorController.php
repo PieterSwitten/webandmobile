@@ -15,7 +15,7 @@ class DoctorController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('default/arts.index.html.twig');
+        return $this->render('default/Arts/index.html.twig');
     }
 
     /**

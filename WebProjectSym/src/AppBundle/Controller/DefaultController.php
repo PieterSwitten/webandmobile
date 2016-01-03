@@ -23,13 +23,7 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig');
     }
 
-    /**
-     * @Route("/adminpage", name="adminroute")
-     */
-    public function adminAction(Request $request)
-    {
-        return new Response("adminpage<br/>");
-    }
+
 
     /**
      * @Route("/userpage", name="userroute")
@@ -72,8 +66,7 @@ class DefaultController extends Controller
             $password = $user->getPassword();
             $encoder = $this->container->
             get('security.password_encoder');
-            $encoded = $encoder->encodePassword($user,
-                $password);
+            $encoded = $encoder->encodePassword($user, $password);
             $user->setPassword($encoded);
             $em->persist($user);
             $em->flush();
