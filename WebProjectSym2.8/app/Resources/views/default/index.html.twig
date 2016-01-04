@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+    <h1>Login</h1>
+    <p>Ingelogd als
+        {% if is_granted('ROLE_USER') %}
+        {{ app.User.Username  }}
+            {% else  %}
+                {{ app.user }}
+                {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            (ADMIN)
+        {% elseif is_granted('ROLE_ARTS') %}
+            (Arts)
+        {% elseif is_granted('ROLE_USER') %}
+            (USER)
+        {% else %}
+            (Annoniem)
+            {% endif %}
+    </p>
+    <div>
+        <a href={{ path("quitroute") }}> quit</a>
+        <a href={{ path("userroute") }}> user</a>
+        <a href={{ path("adminroute") }}> admin</a>
+        <a href={{ path("registerroute") }}> register</a>
+    </div>
+{% endblock %}
