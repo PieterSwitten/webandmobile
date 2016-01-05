@@ -17,21 +17,30 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href={{ path("homeroute") }}>
                         Startpagina
                     </a>
                 </li>
                 <li>
-                    <a href="#">Inloggen</a>
+                    <a href={{ path("userroute") }}>Afspraken</a>
                 </li>
                 <li>
-                    <a href="#">Uitloggen</a>
+                    <a href={{ path("userroute") }}>Doktersprofielen</a>
                 </li>
                 <li>
-                    <a href="#">Afspraak maken</a>
+                    <a href={{ path("adminroute") }}>Administratorpagina</a>
                 </li>
                 <li>
                     <a href="#">Groepsinformatie</a>
+                </li>
+                <li>
+                    <a href={{ path("loginroute") }}>Inloggen</a>
+                </li>
+                <li>
+                    <a href={{ path("registerroute") }}>Registreren</a>
+                </li>
+                <li>
+                    <a href={{ path("quitroute") }}>Uitloggen</a>
                 </li>
             </ul>
         </div>

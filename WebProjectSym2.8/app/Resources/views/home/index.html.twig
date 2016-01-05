@@ -4,28 +4,27 @@
 
 
 
-    <h1>Login</h1>
-    <p>Ingelogd als
-        {% if is_granted('ROLE_USER') %}
-            {{ app.User.Username  }}
-        {% else  %}
-            {{ app.user }}
-        {% endif %}
-        {% if is_granted('ROLE_ADMIN') %}
-            (ADMIN)
-        {% elseif is_granted('ROLE_ARTS') %}
-            (Arts)
-        {% elseif is_granted('ROLE_USER') %}
-            (USER)
-        {% else %}
-            (Annoniem)
-        {% endif %}
-    </p>
-    <div>
-        <a href={{ path("quitroute") }}> quit</a>
-        <a href={{ path("userroute") }}> user</a>
-        <a href={{ path("adminroute") }}> admin</a>
-        <a href={{ path("registerroute") }}> register</a>
+    <div class="jumbotron">
+        <h1 class="text-center">Welkom!</h1>
+        <h3 class="text-center">
+            Je bent
+            {% if is_granted('ROLE_USER') %}
+                als {{ app.User.Username  }}
+            {% else  %}
+                {{ app.user }}
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                 ingelogd als admin
+            {% elseif is_granted('ROLE_ARTS') %}
+                 ingelogd als arts
+            {% elseif is_granted('ROLE_USER') %}
+                 ingelogd
+            {% else %}
+                niet ingelogd
+            {% endif %}
+
+        </h3>
     </div>
 
 {% endblock %}
+
