@@ -9,14 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 
-class DefaultController extends Controller
+class HomeController extends Controller
 {
     /**
      * @Route("/", name="homeroute")
      */
     public function indexAction(Request $request)
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('home/index.html.twig');
     }
 
 
@@ -41,7 +41,7 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-        return $this->render('default/login.html.twig');
+        return $this->render('home/login.html.twig');
     }
 
     /**
@@ -77,7 +77,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('homeroute');
         } else {
             return $this->render(
-                'default/new.html.twig',
+                'home/new.html.twig',
                 array('form' => $form->createView()));
         }
     }
