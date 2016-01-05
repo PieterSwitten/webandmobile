@@ -2,13 +2,18 @@
 {% block title %}login{% endblock %}
 
 {% block body %}
+
     <form action="{{ path('checkroute') }}" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username"
-               name="_username" />
+               name="_username" /><br>
         <label for="password">Password:</label>
         <input type="password" id="password"
-               name="_password" />
+               name="_password" /><br>
         <input type="submit" name="login" />
     </form>
+
+
+
+
 {% endblock %}
