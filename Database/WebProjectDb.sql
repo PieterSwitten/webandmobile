@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 17, 2015 at 01:12 
+-- Generation Time: Jan 05, 2016 at 11:12 
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -28,17 +28,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `userName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `rolesString` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rolesstring` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `userName`, `password`, `rolesString`) VALUES
-(1, 'admin1', '$2y$13$uQ04xfM6a5bb6YMtErPXBunJkilBsas48u/ovgH.iqlWz0Ld8vnG6', 'ROLE_ADMIN ROLE_USER');
+INSERT INTO `user` (`id`, `username`, `password`, `rolesstring`) VALUES
+(1, 'Dylan', '$2y$13$6eYagWVy/FKT8KjeJOJG3OST9jUqM7A5kSI8hkcd0hxuIcR4g.7JC', 'ROLE_USER');
 
 --
 -- Indexes for dumped tables
@@ -58,7 +58,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
