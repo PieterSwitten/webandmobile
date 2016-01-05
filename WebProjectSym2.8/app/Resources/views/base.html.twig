@@ -28,20 +28,56 @@
                     <a href={{ path("userroute") }}>Doktersprofielen</a>
                 </li>
                 <li>
-                    <a href={{ path("adminroute") }}>Administratorpagina</a>
-                </li>
-                <li>
                     <a href="#">Groepsinformatie</a>
+                </li>
+                <hr>
+                <li>
+                    <a href={{ path("registerroute") }}>Registreren</a>
                 </li>
                 <li>
                     <a href={{ path("loginroute") }}>Inloggen</a>
                 </li>
                 <li>
-                    <a href={{ path("registerroute") }}>Registreren</a>
-                </li>
-                <li>
                     <a href={{ path("quitroute") }}>Uitloggen</a>
                 </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <hr>
+                    <hr>
+                    <li class="sidebar-brand">
+                        <a href={{ path("adminroute") }}>
+                            Admin paneel
+                            </a>
+                    </li>
+                    <li>
+                        <a href={{ path("adminroute") }}>Artsen beheren</a>
+                    </li>
+                    <li>
+                        <a href={{ path("adminroute") }}>Locaties beheren</a>
+                    </li>
+                    <li>
+                        <a href={{ path("adminroute") }}>Locatie van arts beheren</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_ARTS') %}
+                    <hr>
+                    <hr>
+                    <li class="sidebar-brand">
+                        <a href={{ path("adminroute") }}>
+                            Artsen paneel
+                        </a>
+                    </li>
+                    <li>
+                        <a href={{ path("adminroute") }}>Uren regelen</a>
+                    </li>
+                    <li>
+                        <a href={{ path("adminroute") }}>Afspraken verwijderen</a>
+                    </li>
+                    <li>
+                        <a href={{ path("adminroute") }}>Profielpagina</a>
+                    </li>
+                {% endif %}
+                <li><br></li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
