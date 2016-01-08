@@ -14,9 +14,9 @@
                 {{ app.user }}
             {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
-                 ingelogd als admin
+                 ingelogd (ADMIN)
             {% elseif is_granted('ROLE_ARTS') %}
-                 ingelogd als arts
+                 ingelogd (ARTS)
             {% elseif is_granted('ROLE_USER') %}
                  ingelogd
             {% else %}
