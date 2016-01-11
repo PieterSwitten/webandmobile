@@ -1,9 +1,9 @@
 body {
     text-align: center;
     align-content: center;
-    background-color: green;
+    background-color: white;
     font-family: "DejaVu Sans";
-    color: cyan;
+    color: black;
 }
 
 .profilepicture {
@@ -13,16 +13,16 @@ body {
 }
 
 .header {
-    width: 95%;
-    background-color: darkgreen;
-    border: solid darkblue 1px;
+    width: 94%;
+    background-color: #eee;
+    border: solid black 5px;
     padding: 0.5%;
     margin: 0.5%;
 }
 
 div {
-    background-color: darkgreen;
-    border: solid darkblue 1px;
+    background-color: #eee;
+    border: solid black 5px;
     text-align: center;
     padding: 0.5%;
     margin: 0.5%;
@@ -45,13 +45,14 @@ p {
     margin: 10px;
 }
 
-footer {
+.footer {
     font-size: xx-small;
+    width: 94%;
 }
 
 
 .person_div {
-    width: 30%;
+    width: 29%;
     height: auto;
     display: inline-block;
     text-decoration-style: solid;
@@ -66,6 +67,12 @@ footer {
 
     .header {
         width: 90%;
+    }
+
+    .logo {
+        width: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .profilepicture {
