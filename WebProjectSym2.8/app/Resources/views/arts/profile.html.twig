@@ -6,10 +6,18 @@
     {% for result in results %}
         <table>
             <tr>
+                <td colspan="3">
+                    <img src="images/{{ result.getProfielfoto() }}" id="img/{{ result.getId() }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td height="15px"></td>
+            </tr>
+            <tr>
                 <td>
                     <label>Naam</label>
                 </td>
-                <td>
+                <td width="15px">
 
                 </td>
                 <td>
@@ -59,6 +67,7 @@
                     <input type="text" value="{{ result.getAdress() }}" title="adress"/>
                 </td>
             </tr>
+            <tr>
         </table>
 
 
