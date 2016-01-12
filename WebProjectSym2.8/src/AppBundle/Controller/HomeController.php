@@ -103,7 +103,7 @@ class HomeController extends Controller
         $em->flush();
         $this->addFlash('User',$user);
 
-        return new Response("oke<br/>");
+        return new Response("oka<br/>");
 
     }
 }
