@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace AppBundle\Entity;
@@ -46,3 +47,5 @@ class User
 
 }
 
+=======
+>>>>>>> c5a3bcd2abcb800a19ecd58b274210d315131bfa
