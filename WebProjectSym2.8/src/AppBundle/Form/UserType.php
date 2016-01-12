@@ -17,10 +17,10 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('password')
+            ->add('username', null, array('label' => 'Gebruikersnaam'))
+            ->add('password', null, array('label' => 'Wachtwoord'))
             ->add('Captcha', CaptchaType::class)
-            ->add('save', SubmitType::class, array('label' => 'New User'))
+            ->add('save', SubmitType::class, array('label' => 'Registreren'))
         ;
     }
     
