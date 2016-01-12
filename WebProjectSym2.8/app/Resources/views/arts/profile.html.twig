@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+    {% for result in results %}
+        {{ result.getId() }}
+        {{ result.getNaam() }}
+        {{ result.getActhernaam() }}
+        {{ result.getAdress() }}
+        {{ result.getProfielfoto() }}
+        {{ result.getUserid().getId() }}
+        {% endfor   %}
+
+{% endblock %}
