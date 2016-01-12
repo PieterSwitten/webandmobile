@@ -5,8 +5,7 @@
     <div class="jumbotron">
         <h1 class="text-center">Admin paneel</h1>
     </div>
-    <a href={{ path('artscontrolroute') }}><button>Artsen beheren</button></a>
-    <button type="button" class="btn"> ={{ path('artscontrolroute') }}>Artsen beheren</button><br><br>
-    <button class="btn" href={{ path("locationcontrolroute") }}>Locaties beheren</button><br><br>
-    <button class="btn" href={{ path("locationartsroute") }}>Locatie van arts beheren</button>
+    <a href={{ path('managehoursroute') }}><button class="btn">Uren regelen</button></a><br><br>
+    <a href={{ path('locationcontrolroute') }}><button class="btn">Afspraken verwijderen</button></a><br><br>
+    <a href={{ path('locationartsroute') }}><button class="btn">Profielpagina</button></a><br><br>
 {% endblock %}

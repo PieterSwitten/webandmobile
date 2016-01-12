@@ -29,16 +29,7 @@
                 <li>
                     <a href={{ path("teamroute") }}>Groepsinformatie</a>
                 </li>
-                <hr>
-                <li>
-                    <a href={{ path("registerroute") }}>Registreren</a>
-                </li>
-                <li>
-                    <a href={{ path("loginroute") }}>Inloggen</a>
-                </li>
-                <li>
-                    <a href={{ path("quitroute") }}>Uitloggen</a>
-                </li>
+
 
                 {% if is_granted('ROLE_ADMIN') %}
                     <hr>
@@ -67,13 +58,29 @@
                         </a>
                     </li>
                     <li>
-                        <a href={{ path("artsroute") }}>Uren regelen</a>
+                        <a href={{ path("managehoursroute") }}>Uren regelen</a>
                     </li>
                     <li>
-                        <a href={{ path("adminroute") }}>Afspraken verwijderen</a>
+                        <a href={{ path("deleteappointmentsroute") }}>Afspraken verwijderen</a>
                     </li>
                     <li>
                         <a href={{ path("artsprofielroute") }}>Profielpagina</a>
+                    </li>
+
+
+                {% endif %}
+                <hr>
+                <hr>
+                {% if is_granted('ROLE_USER') %}
+                    <li>
+                        <a href={{ path("quitroute") }}>Uitloggen</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href={{ path("registerroute") }}>Registreren</a>
+                    </li>
+                    <li>
+                        <a href={{ path("loginroute") }}>Inloggen</a>
                     </li>
                 {% endif %}
                 <li><br></li>
