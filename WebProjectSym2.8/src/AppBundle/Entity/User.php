@@ -21,6 +21,7 @@ class User implements UserInterface, \Serializable
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
 
     /**
      * @var string
