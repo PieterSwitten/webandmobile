@@ -28,13 +28,7 @@ class HomeController extends Controller
     {
         return new Response("userpage<br/>");
     }
-    /**
-     * @Route("/adminpage", name="adminroute")
-     */
-    public function adminAction(Request $request)
-    {
-        return new Response("adminpage<br/>");
-    }
+
 
     /**
      * @Route("/login", name="loginroute")
