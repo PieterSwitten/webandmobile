@@ -45,6 +45,14 @@ class HomeController extends Controller
     }
 
     /**
+     * @Route("/team", name="teamroute")
+     */
+    public function teamAction(Request $request)
+    {
+        return $this->render('home/teammembers.html');
+    }
+
+    /**
      * @Route("/login_check", name="checkroute")
      */
     public function loginCheckAction(){ }

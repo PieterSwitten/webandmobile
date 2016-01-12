@@ -1,0 +1,103 @@
+body {
+    text-align: center;
+    align-content: center;
+    background-color: white;
+    font-family: "DejaVu Sans";
+    color: black;
+}
+
+.profilepicture {
+    width: 60%;
+    margin:10px;
+
+}
+
+.header {
+    width: 94%;
+    background-color: #eee;
+    border: solid black 5px;
+    padding: 0.5%;
+    margin: 0.5%;
+}
+
+div {
+    background-color: #eee;
+    border: solid black 5px;
+    text-align: center;
+    padding: 0.5%;
+    margin: 0.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.logo {
+    width: 15%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+h1 {
+
+}
+
+p {
+    text-align: justify;
+    margin: 10px;
+}
+
+.footer {
+    font-size: xx-small;
+    width: 94%;
+}
+
+
+.person_div {
+    width: 29%;
+    height: auto;
+    display: inline-block;
+    text-decoration-style: solid;
+    font-size: small;
+
+}
+
+@media only screen and (max-width: 900px) {
+    .person_div {
+        width: 90%;
+    }
+
+    .header {
+        width: 90%;
+    }
+
+    .logo {
+        width: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .profilepicture {
+        width: 300px;
+        float: left;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        text-align: center;
+    }
+
+    .person_div {
+        width: 90%;
+    }
+
+    .profilepicture {
+        width: 90%;
+        float: none;
+    }
+
+    .header {
+        width: 90%;
+    }
+
+
+}
