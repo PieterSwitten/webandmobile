@@ -28,7 +28,15 @@ class AdminController extends Controller
      */
     public function artsControl(Request $request)
     {
-        return $this->render('admin/artscontrol.html.twig');
+
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Arts');
+
+        $result = $repository->findAll();
+
+
+        //return $this->render('arts/profile.html.twig', array('results' => $result));
+        return $this->render('admin/artscontrol.html.twig', array('results' => $result));
     }
 
     /**
@@ -36,7 +44,7 @@ class AdminController extends Controller
      */
     public function locationControl(Request $request)
     {
-        return $this->render('admin/locationarts.html.twig');
+        return $this->render('admin/locationcontrol.html.twig');
     }
 
     /**
@@ -44,6 +52,6 @@ class AdminController extends Controller
      */
     public function locationArts(Request $request)
     {
-        return $this->render('admin/locationcontrol.html.twig');
+        return $this->render('admin/locationarts.html.twig');
     }
 }
