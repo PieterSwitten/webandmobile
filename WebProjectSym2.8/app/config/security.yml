@@ -1,14 +1,18 @@
 security:
     firewalls:
-        secured_area:
-            pattern:    ^/
-            anonymous: ~
-            form_login:
-                login_path:  /login
-                check_path:  /login_check
-            logout:
-                 path: /quit
-                 target: /
+            secured_area:
+                pattern:    ^/
+                anonymous: ~
+                form_login:
+                    login_path:  /login
+                    check_path:  /login_check
+                logout:
+                     path: /quit
+                     target: /
+                remember_me:
+                    secret: '%secret%'
+                    lifetime: 604800 # 1 week in seconds
+                    path: /
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
