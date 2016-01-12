@@ -11,9 +11,9 @@ security:
                  target: /
 
     access_control:
-        - { path: ^/adminpage, roles: ROLE_ADMIN }
-        - { path: ^/userpage, roles: [ROLE_ADMIN,ROLE_USER] }
-        - { path: ^/artspage, roles: [ROLE_ADMIN, ROLE_ARTS] }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: [ROLE_ADMIN,ROLE_USER] }
+        - { path: ^/arts, roles: [ROLE_ADMIN, ROLE_ARTS] }
 
     encoders:
         AppBundle\Entity\User:

@@ -22,7 +22,6 @@ class User implements UserInterface, \Serializable
      */
     private $id;
 
-
     /**
      * @var string
      *
@@ -143,6 +142,4 @@ class User implements UserInterface, \Serializable
     {
     }
 
-
 }
-
