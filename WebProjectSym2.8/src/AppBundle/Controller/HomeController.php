@@ -83,4 +83,27 @@ class HomeController extends Controller
                 array('form' => $form->createView()));
         }
     }
+
+    /**
+     * @Route("/makeuser", name="makeusers")
+     */
+    public function makeAction(Request $request) {
+        $password = "";
+        $user = new User();
+        $em = $this->getDoctrine()->getManager();
+
+        $user->setUsername('Doctor1');
+        $user->setRolesstring('ROLE_USER ROLE_ARTS');
+        $password = "d1";
+        $encoder = $this->container->
+        get('security.password_encoder');
+        $encoded = $encoder->encodePassword($user, $password);
+        $user->setPassword($encoded);
+        $em->persist($user);
+        $em->flush();
+        $this->addFlash('User',$user);
+
+        return new Response("oke<br/>");
+
+    }
 }
