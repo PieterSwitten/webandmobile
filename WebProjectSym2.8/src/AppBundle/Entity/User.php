@@ -20,6 +20,7 @@ class User
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
 
     /**
      * @var string
