@@ -92,9 +92,9 @@ class HomeController extends Controller
         $user = new User();
         $em = $this->getDoctrine()->getManager();
 
-        $user->setUsername('Doctor1');
+        $user->setUsername('Doctor5');
         $user->setRolesstring('ROLE_USER ROLE_ARTS');
-        $password = "d1";
+        $password = "d5";
         $encoder = $this->container->
         get('security.password_encoder');
         $encoded = $encoder->encodePassword($user, $password);

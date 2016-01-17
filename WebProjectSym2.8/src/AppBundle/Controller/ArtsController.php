@@ -25,8 +25,26 @@ class ArtsController extends Controller {
     {
 
 
-        return new Response("ArtsPanel<br/>");
+        return $this->render('arts/artspanel.html.twig');
     }
+
+    /**
+     * @Route("/managehours", name="managehoursroute")
+     */
+    public function manageHoursAction(Request $request)
+    {
+        return $this->render('arts/managehours.html.twig');
+    }
+
+    /**
+     * @Route("/deleteappointments", name="deleteappointmentsroute")
+     */
+    public function deleteAppointmentsAction(Request $request)
+    {
+        return $this->render('arts/deleteappointments.html.twig');
+    }
+
+
 
     /**
      * @Route("/artsprofielbeheer", name="artsprofielroute")
