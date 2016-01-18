@@ -7,7 +7,7 @@
         <table>
             <tr>
                 <td colspan="3">
-                    <img src="images/{{ result.getProfielfoto() }}" id="img/{{ result.getId() }}"/>
+                    <img  height="300px" src="images/profiel/{{ result.getId() }}.jpg" id="img/{{ result.getId() }}"/>
                 </td>
             </tr>
             <tr>
@@ -21,7 +21,7 @@
 
                 </td>
                 <td>
-                    <input type="text" value="{{ result.getNaam() }}" title="Naam"/>
+                    <input type="text" disabled value="{{ result.getNaam() }}" title="Naam"/>
                 </td>
 
             </tr>
@@ -36,7 +36,7 @@
 
                 </td>
                 <td>
-                    <input type="text" value="{{ result.getActhernaam() }}" title="Achternaam"/>
+                    <input type="text" disabled value="{{ result.getActhernaam() }}" title="Achternaam"/>
                 </td>
             </tr>
             <tr>
@@ -50,7 +50,7 @@
 
                 </td>
                 <td>
-                    <input type="text" value="{{ result.getEmail() }}" title="email" />
+                    <input type="text" disabled value="{{ result.getEmail() }}" title="email" />
                 </td>
             </tr>
             <tr>
@@ -64,22 +64,17 @@
 
                 </td>
                 <td>
-                    <input type="text" value="{{ result.getAdress() }}" title="adress"/>
+                    <input type="text"  disabled value="{{ result.getAdress() }}" title="adress"/>
                 </td>
             </tr>
             <tr>
+                <td colspan="3" >
+                    <a href="{{ path("artsprofielbewerkroute") }}"><input type="button" value="Bewerken" ></a>
+                </td>
+            </tr>
         </table>
+        </form>
+        {% endfor    %}
 
 
-
-
-
-
-    {% endfor   %}
-
-    </form>
-
-
-
-
-{% endblock %}
+        {% endblock %}

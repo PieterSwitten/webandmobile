@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Arts
@@ -50,11 +51,13 @@ class Arts
     private $adress;
 
     /**
-     * @var string
+     * @ORM\Column(type="string")
      *
-     * @ORM\Column(name="profielfoto", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "image/jpg" })
      */
     private $profielfoto;
+
 
     /**
      * @var \User
@@ -65,6 +68,8 @@ class Arts
      * })
      */
     private $userid;
+
+
 
     /**
      * @return int
@@ -146,21 +151,7 @@ class Arts
         $this->adress = $adress;
     }
 
-    /**
-     * @return string
-     */
-    public function getProfielfoto()
-    {
-        return $this->profielfoto;
-    }
 
-    /**
-     * @param string $profielfoto
-     */
-    public function setProfielfoto($profielfoto)
-    {
-        $this->profielfoto = $profielfoto;
-    }
 
     /**
      * @return \User
@@ -176,6 +167,22 @@ class Arts
     public function setUserid($userid)
     {
         $this->userid = $userid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfielfoto()
+    {
+        return $this->profielfoto;
+    }
+
+    /**
+     * @param string $profielfoto
+     */
+    public function setProfielfoto($profielfoto)
+    {
+        $this->profielfoto = $profielfoto;
     }
 
 
