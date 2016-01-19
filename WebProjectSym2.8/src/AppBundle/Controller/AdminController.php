@@ -44,7 +44,13 @@ class AdminController extends Controller
      */
     public function locationControl(Request $request)
     {
-        return $this->render('admin/locationcontrol.html.twig');
+
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Locaties');
+
+        $result = $repository->findAll();
+
+        return $this->render('admin/locationcontrol.html.twig' , array('results' => $result));
     }
 
     /**
@@ -52,6 +58,10 @@ class AdminController extends Controller
      */
     public function locationArts(Request $request)
     {
+
+
+
+
         return $this->render('admin/locationarts.html.twig');
     }
 }

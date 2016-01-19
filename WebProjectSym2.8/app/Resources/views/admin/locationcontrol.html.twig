@@ -5,4 +5,19 @@
     <div class="jumbotron">
         <h1 class="text-center">Locaties beheren</h1>
     </div>
+    <table class="table">
+        <tr>
+            <th>Arts Naam</th>
+            <th>Lokaal</th>
+            <th>Adres</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.getArtsid().getNaam() }} {{  result.getArtsid().getActhernaam() }}</td>
+                <td>{{ result.getLokaal() }}</td>
+                <td>{{ result.getAdres() }}</td>
+            </tr>
+        {% endfor   %}
+    </table>
+
 {% endblock %}
