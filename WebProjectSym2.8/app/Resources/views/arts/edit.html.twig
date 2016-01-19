@@ -8,6 +8,13 @@
     {{ form_start(form) }}
     <table>
         <tr>
+            <td>{{ form_widget(form.id) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
             <td>{{ form_label(form.naam) }}&nbsp;&nbsp;</td>
             <td>{{ form_widget(form.naam) }}</td>
         </tr>
