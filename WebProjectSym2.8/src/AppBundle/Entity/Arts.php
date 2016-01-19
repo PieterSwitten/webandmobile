@@ -150,7 +150,6 @@ class Arts
     }
 
 
-
     /**
      * @return \User
      */
@@ -183,8 +182,4 @@ class Arts
         $this->profielfoto = $profielfoto;
     }
 
-
-
-
 }
-

@@ -157,40 +157,5 @@ class ArtsController extends Controller
         return $this->render('arts/profile.html.twig', array('results' => $result));
     }
 
-    /**
-     * @Route("/test", name="/new")
-     */
-    public function newAction(Request $request)
-    {
-        $product = new Product();
-        $form = $this->createForm(ProductType::class, $product);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            // $file stores the uploaded PDF file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            $file = $product->getBrochure();
-
-            // Generate a unique name for the file before saving it
-            $fileName = md5(uniqid()).'.'."jpg";
-
-            // Move the file to the directory where brochures are stored
-            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/brochures';
-            $file->move($brochuresDir, $fileName);
-
-            // Update the 'brochure' property to store the PDF file name
-            // instead of its contents
-            $product->setBrochure($fileName);
-
-            // ... persist the $product variable or any other work
-
-            return $this->render('home/index.html.twig');
-            //return $this->redirect($this->generateUrl('app_product_list'));
-        }
-
-        return $this->render('test/new.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
 
 }
