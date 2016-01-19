@@ -11,6 +11,7 @@
             <th>Achternaam</th>
             <th>Email</th>
             <th>Adres</th>
+            <th>Acties</th>
         </tr>
     {% for result in results %}
         <tr>
@@ -18,8 +19,12 @@
             <td>{{ result.getActhernaam() }}</td>
             <td>{{ result.getEmail() }}</td>
             <td>{{ result.getAdress() }}</td>
+            <td>
+                <a href={{ path('artseditbyadminroute', {'id': result.getId()}) }}><button class="btn">Bewerken</button></a>
+                <a><button class="btn">Verwijderen</button></a>
+            </td>
         </tr>
-    {% endfor   %}
+    {% endfor %}
     </table>
 
 

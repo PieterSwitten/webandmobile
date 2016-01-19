@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Arts;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +38,85 @@ class AdminController extends Controller
 
         //return $this->render('arts/profile.html.twig', array('results' => $result));
         return $this->render('admin/artscontrol.html.twig', array('results' => $result));
+    }
+
+    /**
+     * @Route("/artseditbyadminpage/{id}", name="artseditbyadminroute")
+     */
+    public function artsEditByAdmin(Request $request, $id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('AppBundle:Arts')->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $product->setName('New product name!');
+        $em->flush();
+
+
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Arts');
+
+        $result = $repository->findByuserid($id);
+
+        $arts = new Arts();
+        $form = $this->createForm(ArtsType::class, $arts);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $arts->getProfielfoto();
+
+            // Generate a unique name for the file before saving it
+            $fileName = $ids.'.'."jpeg";
+
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/images/profiel';
+            $file->move($brochuresDir, $fileName);
+
+
+            $data = $form->getData();
+
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+
+            $em = $this->getDoctrine()->getManager();
+            $arts = $em->getRepository('AppBundle:Arts')->find($ids);
+
+
+            if (!$arts) {
+                throw $this->createNotFoundException(
+                    'No Arts found for id '
+                );
+            }
+            $arts->setProfielfoto($fileName);
+            $arts->setNaam($data->getNaam());
+            $arts->setActhernaam($data->getActhernaam());
+            $arts->setAdress($data->getAdress());
+            $arts->setEmail($data->getEmail());
+            $arts->setId($data->getId());
+
+            // ... persist the $product variable or any other work
+
+            $em->flush();
+
+            return $this->render('arts/artspanel.html.twig');
+            //return $this->redirect($this->generateUrl('app_product_list'));
+        }
+
+        return $this->render('arts/edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
     }
 
     /**
