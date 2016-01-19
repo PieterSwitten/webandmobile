@@ -32,4 +32,12 @@ class PatientController extends Controller {
 
         return $this->render('patient/dokterprofielen.html.twig', array('results' => $result));
     }
+
+    /**
+     * @Route("/afspraken", name="patientAfsprakenroute")
+     */
+    public function afsprakenAction(Request $request)
+    {
+        return new Response("test<br/>");
+    }
 }
