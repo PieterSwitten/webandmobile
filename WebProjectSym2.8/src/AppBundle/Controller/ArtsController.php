@@ -15,7 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Arts;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use AppBundle\Entity\Product;
+use AppBundle\Form\ProductType;
 
 class ArtsController extends Controller
 {
@@ -53,37 +54,86 @@ class ArtsController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $id = $user->getId();
+
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Arts');
-        $arts = $repository->findByuserid($id);
 
+        $result = $repository->findByuserid($id);
+        $ids = $result[0]->getId();
+
+        $arts = new Arts();
         $form = $this->createForm(ArtsType::class, $arts);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            //* @var Symfony\Component\HttpFoundation\File\UploadedFile $file*/
+
+        if ($form->isValid()) {
+
+
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $arts->getProfielfoto();
 
-            $fileName = $arts->getId() . '.'.$file->guessExtension();
+            // Generate a unique name for the file before saving it
+            $fileName = $ids.'.'."jpeg";
 
-            $fileDir = $this->container->getParameter('kernel.root_dir').'/../web/images/profiel';
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/images/profiel';
+            $file->move($brochuresDir, $fileName);
 
-            $file->move($fileDir, $fileName);
 
-            $arts->setProfielfoto($fileName);
+            $data = $form->getData();
+
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($arts);
+            $arts = $em->getRepository('AppBundle:Arts')->find($ids);
+
+
+            if (!$arts) {
+                throw $this->createNotFoundException(
+                    'No Arts found for id '
+                );
+            }
+            $arts->setProfielfoto($fileName);
+            $arts->setNaam($data->getNaam());
+            $arts->setActhernaam($data->getActhernaam());
+            $arts->setAdress($data->getAdress());
+            $arts->setEmail($data->getEmail());
+            $arts->setId($data->getId());
+
+            // ... persist the $product variable or any other work
+
             $em->flush();
-            $this->addFlash('Arts', $arts);
 
-
-            return $this->redirectToRoute('artsprofielroute');
-        } else {
-            return $this->render(
-                'arts/edit.html.twig',
-                array('form' => $form->createView()));
+            return $this->render('arts/artspanel.html.twig');
+            //return $this->redirect($this->generateUrl('app_product_list'));
         }
 
+        return $this->render('arts/edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
+    }
+
+    function UpdateAction($data) {
+        $em = $this->getDoctrine()->getManager();
+        $arts = $em->getRepository('AppBundle:Arts')->find($data->getId());
+
+        if (!$arts) {
+            throw $this->createNotFoundException(
+                'No Arts found for id '.$data.getId()
+            );
+        }
+
+        $arts->setNaam($data->getNaam());
+        $arts->setId($data->getId());
+        $arts->setActhernaam($data->getActhernaam());
+        $arts->setEmail($data->getEmail());
+        $arts->setAdress($data->getAdress());
+        $arts->setUserid($data->getUserid());
+        $arts->setProfielfoto($data->getProfielfoto());
+        $em->flush();
     }
 
 
@@ -105,6 +155,42 @@ class ArtsController extends Controller
 
 
         return $this->render('arts/profile.html.twig', array('results' => $result));
+    }
+
+    /**
+     * @Route("/test", name="/new")
+     */
+    public function newAction(Request $request)
+    {
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $product->getBrochure();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'."jpg";
+
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/brochures';
+            $file->move($brochuresDir, $fileName);
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $product->setBrochure($fileName);
+
+            // ... persist the $product variable or any other work
+
+            return $this->render('home/index.html.twig');
+            //return $this->redirect($this->generateUrl('app_product_list'));
+        }
+
+        return $this->render('test/new.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
 }
