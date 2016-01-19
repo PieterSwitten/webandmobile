@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Arts;
+use AppBundle\Form\ArtsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,18 +47,6 @@ class AdminController extends Controller
     public function artsEditByAdmin(Request $request, $id)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $product = $em->getRepository('AppBundle:Arts')->find($id);
-
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
-        }
-
-        $product->setName('New product name!');
-        $em->flush();
-
 
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Arts');
@@ -76,7 +65,7 @@ class AdminController extends Controller
             $file = $arts->getProfielfoto();
 
             // Generate a unique name for the file before saving it
-            $fileName = $ids.'.'."jpeg";
+            $fileName = $id.'.'."jpeg";
 
             // Move the file to the directory where brochures are stored
             $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/images/profiel';
@@ -90,7 +79,7 @@ class AdminController extends Controller
             // instead of its contents
 
             $em = $this->getDoctrine()->getManager();
-            $arts = $em->getRepository('AppBundle:Arts')->find($ids);
+            $arts = $em->getRepository('AppBundle:Arts')->find($id);
 
 
             if (!$arts) {
@@ -109,7 +98,7 @@ class AdminController extends Controller
 
             $em->flush();
 
-            return $this->render('arts/artspanel.html.twig');
+            return $this->redirectToRoute('artscontrolroute');
             //return $this->redirect($this->generateUrl('app_product_list'));
         }
 
@@ -117,6 +106,26 @@ class AdminController extends Controller
             'form' => $form->createView(),
         ));
 
+    }
+
+    /**
+     * @Route("/deleteartspage/{id}", name="deleteartsroute")
+     */
+    public function deleteArtsPage(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //$arts = new Arts();
+        $arts = $em->getRepository('AppBundle:Arts')->find($id);
+
+        if (!$arts) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+        $em->remove($arts);
+        $em->flush();
+
+        return $this->redirectToRoute('artscontrolroute');
     }
 
     /**

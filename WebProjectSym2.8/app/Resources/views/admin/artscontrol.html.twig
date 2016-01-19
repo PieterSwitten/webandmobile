@@ -21,7 +21,7 @@
             <td>{{ result.getAdress() }}</td>
             <td>
                 <a href={{ path('artseditbyadminroute', {'id': result.getId()}) }}><button class="btn">Bewerken</button></a>
-                <a><button class="btn">Verwijderen</button></a>
+                <a href={{ path('deleteartsroute', {'id': result.getId()}) }}><button class="btn">Verwijderen</button></a>
             </td>
         </tr>
     {% endfor %}
