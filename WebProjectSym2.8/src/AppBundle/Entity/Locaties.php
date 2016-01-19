@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Locaties
  *
- * @ORM\Table(name="locaties", uniqueConstraints={@ORM\UniqueConstraint(name="artsid", columns={"artsid"})})
+ * @ORM\Table(name="locaties")
  * @ORM\Entity
  */
 class Locaties
@@ -34,16 +34,6 @@ class Locaties
      * @ORM\Column(name="adres", type="string", length=255, nullable=false)
      */
     private $adres;
-
-    /**
-     * @var \Arts
-     *
-     * @ORM\ManyToOne(targetEntity="Arts")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="artsid", referencedColumnName="id")
-     * })
-     */
-    private $artsid;
 
     /**
      * @return int
@@ -91,22 +81,6 @@ class Locaties
     public function setAdres($adres)
     {
         $this->adres = $adres;
-    }
-
-    /**
-     * @return \Arts
-     */
-    public function getArtsid()
-    {
-        return $this->artsid;
-    }
-
-    /**
-     * @param \Arts $artsid
-     */
-    public function setArtsid($artsid)
-    {
-        $this->artsid = $artsid;
     }
 
 

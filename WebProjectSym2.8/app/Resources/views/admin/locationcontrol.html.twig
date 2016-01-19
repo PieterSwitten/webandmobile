@@ -7,14 +7,14 @@
     </div>
     <table class="table">
         <tr>
-            <th>Arts Naam</th>
+            <th>Lokaal Id</th>
             <th>Lokaal</th>
             <th>Adres</th>
             <th>Acties</th>
         </tr>
         {% for result in results %}
             <tr>
-                <td>{{ result.getArtsid().getNaam() }} {{  result.getArtsid().getActhernaam() }}</td>
+                <td>{{ result.getId() }}</td>
                 <td>{{ result.getLokaal() }}</td>
                 <td>{{ result.getAdres() }}</td>
                 <td>

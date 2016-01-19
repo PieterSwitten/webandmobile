@@ -68,6 +68,26 @@ class Arts
      */
     private $userid;
 
+    /**
+     * @var \Locaties
+     *
+     * @ORM\ManyToOne(targetEntity="Locaties")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="locatieid", referencedColumnName="id")
+     * })
+     */
+    private $locatieid;
+
+    /**
+     * @return \Locaties
+     */
+    public function getLocatieid()
+    {
+        return $this->locatieid;
+    }
+
+
+
 
     /**
      * @return int
@@ -181,5 +201,5 @@ class Arts
     {
         $this->profielfoto = $profielfoto;
     }
-
 }
+

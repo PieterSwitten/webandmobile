@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2016 at 11:10 
+-- Generation Time: Jan 19, 2016 at 11:44 
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -33,16 +33,17 @@ CREATE TABLE `arts` (
   `email` varchar(255) NOT NULL,
   `adress` varchar(255) NOT NULL,
   `profielfoto` varchar(255) NOT NULL,
-  `userid` int(11) DEFAULT NULL
+  `userid` int(11) DEFAULT NULL,
+  `locatieid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `arts`
 --
 
-INSERT INTO `arts` (`id`, `naam`, `acthernaam`, `email`, `adress`, `profielfoto`, `userid`) VALUES
-(1, 'Dylan', 'Gomes', 'Dylangomes@live.be', 'Drie Eikenstraat 17', '1.jpeg', 2),
-(7, 'Kevin', 'Pieter', 'Kevin.Pieter@live.be', 'KevinsPieterlaan 1', '7.jpeg', 4);
+INSERT INTO `arts` (`id`, `naam`, `acthernaam`, `email`, `adress`, `profielfoto`, `userid`, `locatieid`) VALUES
+(1, 'Dylan', 'Gomes', 'Dylangomes@live.be', 'Drie Eikenstraat 17', '1.jpeg', 2, 1),
+(2, 'Kevin', 'Pieter', 'Kevin.Pieter@live.be', 'KevinsPieterlaan 1', '2.jpeg', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -52,7 +53,6 @@ INSERT INTO `arts` (`id`, `naam`, `acthernaam`, `email`, `adress`, `profielfoto`
 
 CREATE TABLE `locaties` (
   `id` int(11) NOT NULL,
-  `artsid` int(11) NOT NULL,
   `lokaal` varchar(255) NOT NULL,
   `adres` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -61,8 +61,8 @@ CREATE TABLE `locaties` (
 -- Dumping data for table `locaties`
 --
 
-INSERT INTO `locaties` (`id`, `artsid`, `lokaal`, `adres`) VALUES
-(1, 1, 'A1', 'Testlaan 5');
+INSERT INTO `locaties` (`id`, `lokaal`, `adres`) VALUES
+(1, 'A1', 'Testlaan 5');
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `rolesstring`) VALUES
 (1, 'Dylan', '$2y$13$6eYagWVy/FKT8KjeJOJG3OST9jUqM7A5kSI8hkcd0hxuIcR4g.7JC', 'ROLE_USER ROLE_ARTS ROLE_ADMIN'),
-(2, 'Arts', '$2y$13$TIWMmXRXv98.nfpJT/ze/eqYPjOKnHuuFp.OswSawsVI6mzxWE/7W', 'ROLE_USER ROLE_ARTS ROLE_ADMIN'),
+(2, 'Arts', '$2y$13$TIWMmXRXv98.nfpJT/ze/eqYPjOKnHuuFp.OswSawsVI6mzxWE/7W', 'ROLE_USER ROLE_ADMIN ROLE_ARTS'),
 (4, 'Doctor4', '$2y$13$LnImja8xUlNQK4DTxpq7W.Nv4b4zDUeHv900xYpR5TV7YHTzbOBr2', 'ROLE_USER ROLE_ARTS'),
 (5, 'Doctor5', '$2y$13$J8B2tkAr9LpMsecIuNBMx.h6CaXuKg14EZ2r2ALTyb3kq/asYhTXW', 'ROLE_USER ROLE_ARTS'),
 (6, 'Doctor2', '$2y$13$/3fIbfZPffy/YMxEbUfz1.BRfKfs5cskA07IiruBzJlDMWKZ5Qys6', 'ROLE_USER ROLE_ARTS'),
@@ -114,14 +114,14 @@ INSERT INTO `user` (`id`, `username`, `password`, `rolesstring`) VALUES
 --
 ALTER TABLE `arts`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `userid` (`userid`);
+  ADD UNIQUE KEY `userid` (`userid`),
+  ADD KEY `locatieid` (`locatieid`);
 
 --
 -- Indexes for table `locaties`
 --
 ALTER TABLE `locaties`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `artsid` (`artsid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `uren`
@@ -169,13 +169,8 @@ ALTER TABLE `user`
 -- Constraints for table `arts`
 --
 ALTER TABLE `arts`
-  ADD CONSTRAINT `FK_77F46F30F132696E` FOREIGN KEY (`userid`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `locaties`
---
-ALTER TABLE `locaties`
-  ADD CONSTRAINT `locaties_ibfk_1` FOREIGN KEY (`artsid`) REFERENCES `arts` (`id`);
+  ADD CONSTRAINT `FK_77F46F30F132696E` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `arts_ibfk_1` FOREIGN KEY (`locatieid`) REFERENCES `locaties` (`id`);
 
 --
 -- Constraints for table `uren`
