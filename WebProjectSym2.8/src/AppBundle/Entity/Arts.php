@@ -53,7 +53,7 @@ class Arts
     /**
      * @ORM\Column(type="string")
      *
-     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\NotBlank(message="Please, upload a images.")
      */
     private $profielfoto;
 
