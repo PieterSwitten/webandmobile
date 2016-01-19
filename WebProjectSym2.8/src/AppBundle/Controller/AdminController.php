@@ -109,6 +109,93 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/editlocationpage/{id}", name="editlocationroute")
+     */
+    public function editLocationPage(Request $request, $id)
+    {
+
+
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Arts');
+
+        $result = $repository->findByuserid($id);
+
+        $arts = new Arts();
+        $form = $this->createForm(ArtsType::class, $arts);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $arts->getProfielfoto();
+
+            // Generate a unique name for the file before saving it
+            $fileName = $id.'.'."jpeg";
+
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/images/profiel';
+            $file->move($brochuresDir, $fileName);
+
+
+            $data = $form->getData();
+
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+
+            $em = $this->getDoctrine()->getManager();
+            $arts = $em->getRepository('AppBundle:Arts')->find($id);
+
+
+            if (!$arts) {
+                throw $this->createNotFoundException(
+                    'No Arts found for id '
+                );
+            }
+            $arts->setProfielfoto($fileName);
+            $arts->setNaam($data->getNaam());
+            $arts->setActhernaam($data->getActhernaam());
+            $arts->setAdress($data->getAdress());
+            $arts->setEmail($data->getEmail());
+            $arts->setId($data->getId());
+
+            // ... persist the $product variable or any other work
+
+            $em->flush();
+
+            return $this->redirectToRoute('artscontrolroute');
+            //return $this->redirect($this->generateUrl('app_product_list'));
+        }
+
+        return $this->render('arts/edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
+    }
+
+    /**
+     * @Route("/deletelocationpage/{id}", name="deletelocationroute")
+     */
+    public function deleteLocationPage(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //$arts = new Arts();
+        $location = $em->getRepository('AppBundle:Locaties')->find($id);
+
+        if (!$location) {
+            throw $this->createNotFoundException(
+                'No location found for id '.$id
+            );
+        }
+        $em->remove($location);
+        $em->flush();
+
+        return $this->redirectToRoute('artscontrolroute');
+    }
+
+    /**
      * @Route("/deleteartspage/{id}", name="deleteartsroute")
      */
     public function deleteArtsPage(Request $request, $id)
@@ -125,7 +212,7 @@ class AdminController extends Controller
         $em->remove($arts);
         $em->flush();
 
-        return $this->redirectToRoute('artscontrolroute');
+        return $this->redirectToRoute('locationcontrolroute');
     }
 
     /**
