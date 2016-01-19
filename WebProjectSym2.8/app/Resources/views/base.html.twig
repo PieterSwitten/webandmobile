@@ -48,8 +48,6 @@
                     <li>
                         <a href={{ path("locationartsroute") }}>Locatie van arts beheren</a>
                     </li>
-                {% endif %}
-                {% if is_granted('ROLE_ARTS') %}
                     <hr>
                     <hr>
                     <li class="sidebar-brand">
@@ -67,6 +65,24 @@
                         <a href={{ path("artsprofielroute") }}>Profielpagina</a>
                     </li>
 
+                {% elseif is_granted('ROLE_ARTS') %}
+                    <hr>
+                    <hr>
+
+                    <li class="sidebar-brand">
+                        <a href={{ path("artsroute") }}>
+                            Artsen paneel
+                        </a>
+                    </li>
+                    <li>
+                        <a href={{ path("managehoursroute") }}>Uren regelen</a>
+                    </li>
+                    <li>
+                        <a href={{ path("deleteappointmentsroute") }}>Afspraken verwijderen</a>
+                    </li>
+                    <li>
+                        <a href={{ path("artsprofielroute") }}>Profielpagina</a>
+                    </li>
 
                 {% endif %}
                 <hr>
