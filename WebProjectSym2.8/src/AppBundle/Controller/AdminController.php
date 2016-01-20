@@ -10,8 +10,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Arts;
 use AppBundle\Form\ArtsType;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -192,7 +194,16 @@ class AdminController extends Controller
         $em->remove($location);
         $em->flush();
 
-        return $this->redirectToRoute('artscontrolroute');
+        return $this->redirectToRoute('locationcontrolroute');
+    }
+
+
+    /**
+     * @Route("/addartspage", name="addartsroute")
+     */
+    public function addArtsPage(Request $request)
+    {
+        return $this->render('admin/addarts.html.twig');
     }
 
     /**
@@ -209,10 +220,13 @@ class AdminController extends Controller
                 'No product found for id '.$id
             );
         }
+
+
         $em->remove($arts);
         $em->flush();
 
-        return $this->redirectToRoute('locationcontrolroute');
+
+        return $this->redirectToRoute('artscontrolroute');
     }
 
     /**

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="text-center">Artsen toevoegen</h1>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Username</th>
+            <th>Acties</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.getUsername() }}</td>
+                <td>
+                    <a href={{ path('artseditbyadminroute', {'id': result.getId()}) }}><button class="btn">Arts maken</button></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
