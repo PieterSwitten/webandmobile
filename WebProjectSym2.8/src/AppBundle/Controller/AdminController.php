@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Arts;
+use AppBundle\Entity\User;
 use AppBundle\Form\ArtsType;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -203,7 +204,27 @@ class AdminController extends Controller
      */
     public function addArtsPage(Request $request)
     {
-        return $this->render('admin/addarts.html.twig');
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:User');
+
+        $result = $repository->findAll();
+        for ($i = count($result)-1; $i>=0; $i--) {
+            if (strpos($result[$i]->getRolesstring(), 'ROLE_ARTS')) {
+                unset($result[$i]);
+            }
+        }
+
+
+        return $this->render('admin/addarts.html.twig', array('results' => $result));
+    }
+
+    /**
+     * @Route("/updatetoarts/{id}", name="updatetoartsroute")
+     */
+    public function updateToArts(Request $request, $id)
+    {
+
+        return $this->redirectToRoute('addartsroute');
     }
 
     /**
