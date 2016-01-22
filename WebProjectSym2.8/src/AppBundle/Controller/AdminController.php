@@ -258,10 +258,11 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         //$arts = new Arts();
         $arts = $em->getRepository('AppBundle:Arts')->find($id);
+        $userid = $arts->getUserid();
 
         if (!$arts) {
             throw $this->createNotFoundException(
-                'No product found for id '.$id
+                'No arts found for id '.$id
             );
         }
 
@@ -269,6 +270,20 @@ class AdminController extends Controller
         $em->remove($arts);
         $em->flush();
 
+        $eme = $this->getDoctrine()->getManager();
+        $user = $eme->getRepository('AppBundle:User')->find($userid);
+
+
+
+        if (!$user) {
+            throw $this->createNotFoundException(
+                'No User found for id ' . $id
+            );
+        }
+        $user->setRolesstring(str_replace(" ROLE_ARTS", "", $user->getRolesstring()));
+        // ... persist the $product variable or any other work
+
+        $eme->flush();
 
         return $this->redirectToRoute('artscontrolroute');
     }
