@@ -14,7 +14,7 @@
             <tr>
                 <td>{{ result.getUsername() }}</td>
                 <td>
-                    <a href={{ path('artseditbyadminroute', {'id': result.getId()}) }}><button class="btn">Arts maken</button></a>
+                    <a href={{ path('updatetoartsroute', {'id': result.getId()}) }}><button class="btn">Arts maken</button></a>
                 </td>
             </tr>
         {% endfor %}

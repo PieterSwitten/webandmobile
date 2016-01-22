@@ -223,6 +223,29 @@ class AdminController extends Controller
      */
     public function updateToArts(Request $request, $id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->find($id);
+
+
+
+        if (!$user) {
+            throw $this->createNotFoundException(
+                'No User found for id ' . $id
+            );
+        }
+        $user->setRolesstring($user->getRolesstring() . ' ROLE_ARTS');
+
+        // ... persist the $product variable or any other work
+
+        $em->flush();
+
+        $arts = new Arts();
+        $arts->setUserid($user);
+
+        $eme = $this->getDoctrine()->getManager();
+
+        $eme->persist($arts);
+        $eme->flush();
 
         return $this->redirectToRoute('addartsroute');
     }

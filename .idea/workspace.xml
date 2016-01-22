@@ -70,7 +70,7 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.5">
+            <state vertical-scroll-proportion="-8.75">
               <caret line="49" column="46" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="46" />
               <folding />
             </state>
@@ -90,8 +90,8 @@
       <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43333334">
-              <caret line="221" column="59" selection-start-line="221" selection-start-column="42" selection-end-line="221" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.48333332">
+              <caret line="225" column="39" selection-start-line="225" selection-start-column="39" selection-end-line="225" selection-end-column="39" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
                 <element signature="e#123#149#0#PHP" expanded="true" />
@@ -183,8 +183,8 @@
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/addarts.html" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/artscontrol.html.twig" />
-        <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/AdminController.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/addarts.html.twig" />
+        <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/AdminController.php" />
       </list>
     </option>
   </component>
@@ -198,7 +198,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="2467" />
+    <option name="x" value="2461" />
     <option name="y" value="52" />
     <option name="width" value="1373" />
     <option name="height" value="1028" />
@@ -706,7 +706,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2467" y="52" width="1373" height="1028" extended-state="4" />
+    <frame x="2461" y="52" width="1373" height="1028" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25782958" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="713" y="94" width="270" height="954" />
@@ -740,7 +740,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -1090,14 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5">
-          <caret line="49" column="46" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/home/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.625">
@@ -1114,10 +1108,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.75">
+          <caret line="49" column="46" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43333334">
-          <caret line="221" column="59" selection-start-line="221" selection-start-column="42" selection-end-line="221" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.48333332">
+          <caret line="225" column="39" selection-start-line="225" selection-start-column="39" selection-end-line="225" selection-end-column="39" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
             <element signature="e#123#149#0#PHP" expanded="true" />
