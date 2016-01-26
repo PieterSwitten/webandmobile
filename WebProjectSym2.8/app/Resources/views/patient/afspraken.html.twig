@@ -1,5 +1,57 @@
 {% extends 'base.html.twig' %}
 {% block title %}homepage{% endblock %}
 {% block body %}
+    <div class="jumbotron">
+        <h1 class="text-center">Afspraak maken</h1>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dokters
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            {% for arts in artsen %}
+                <li><a href="#">{{ arts.getNaam }} {{ arts.getActhernaam }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dagen
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            {% if  "now"|date("D") != 'Sun' %}
+                <li><a href="#">{{ "now"|date("D d M") }}</a></li>
+            {% endif %}
+            {% if  "now"|date_modify("+1 day")|date("D") != 'Sun' %}
+                <li><a href="#">{{ "now"|date_modify("+1 day")|date("D d M") }}</a></li>
+            {% endif %}
+            {% if  "now"|date_modify("+2 day")|date("D") != 'Sun' %}
+                <li><a href="#">{{ "now"|date_modify("+2 day")|date("D d M") }}</a></li>
+            {% endif %}
+            {% if  "now"|date_modify("+3 day")|date("D") != 'Sun' %}
+                <li><a href="#">{{ "now"|date_modify("+3 day")|date("D d M") }}</a></li>
+            {% endif %}
+            {% if  "now"|date_modify("+4 day")|date("D") != 'Sun' %}
+                <li><a href="#">{{ "now"|date_modify("+4 day")|date("D d M") }}</a></li>
+            {% endif %}
+            {% if  "now"|date_modify("+5 day")|date("D") != 'Sun' %}
+                <li><a href="#">{{ "now"|date_modify("+5 day")|date("D d M") }}</a></li>
+            {% endif %}
+            {% if  "now"|date_modify("+6 day")|date("D") != 'Sun' %}
+                <li><a href="#">{{ "now"|date_modify("+6 day")|date("D d M") }}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Uur</th>
+            <th>Acties</th>
+        </tr>
+        {% for i in 1..16 %}
+            <td>
+                {% if i%2 == 0 %}
+                {%  %}
+            </td>
+        {% endfor %}
+    </table>
 
 {% endblock %}

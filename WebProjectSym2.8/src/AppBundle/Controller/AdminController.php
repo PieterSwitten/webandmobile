@@ -119,7 +119,7 @@ class AdminController extends Controller
 
 
         $repository = $this->getDoctrine()
-            ->getRepository('AppBundle:Arts');
+            ->getRepository('AppBundle:Locaties');
 
         $result = $repository->findByuserid($id);
 
@@ -194,6 +194,7 @@ class AdminController extends Controller
         }
         $em->remove($location);
         $em->flush();
+
 
         return $this->redirectToRoute('locationcontrolroute');
     }
@@ -299,13 +300,16 @@ class AdminController extends Controller
 
         $result = $repository->findAll();
 
-        return $this->render('admin/locationcontrol.html.twig' , array('results' => $result));
+        $reposArts = $this->getDoctrine()->getRepository('AppBundle:Arts');
+        $artsen = $reposArts->findAll();
+
+        return $this->render('admin/locationcontrol.html.twig' , array('results' => $result, 'artsen' => $artsen));
     }
 
     /**
      * @Route("/locationartspage", name="locationartsroute")
      */
-    public function locationArts(Request $request)
+    public function locationArtsedit(Request $request)
     {
 
 

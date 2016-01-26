@@ -23,8 +23,6 @@ class PatientController extends Controller {
      */
     public function indexAction(Request $request)
     {
-        $arts = new Arts();
-
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Arts');
 
@@ -38,6 +36,15 @@ class PatientController extends Controller {
      */
     public function afsprakenAction(Request $request)
     {
-        return new Response("test<br/>");
+        $reposArts = $this->getDoctrine()
+            ->getRepository('AppBundle:Arts');
+
+        $artsen = $reposArts->findAll();
+
+        $reposUren = $this->getDoctrine()->getRepository('AppBundle:Uren');
+        $uren = $reposUren->findAll();
+
+        return $this->render('patient/afspraken.html.twig', array('artsen' => $artsen, 'uren' => $uren));
+
     }
 }

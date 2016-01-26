@@ -18,8 +18,19 @@
                 <td>{{ result.getLokaal() }}</td>
                 <td>{{ result.getAdres() }}</td>
                 <td>
+                    {% set del = 0 %}
                     <a href={{ path('editlocationroute', {'id': result.getId()}) }}><button class="btn">Bewerken</button></a>
-                    <a href={{ path('deletelocationroute', {'id': result.getId()}) }}><button class="btn">Verwijderen</button></a>
+                    {% for arts in artsen %}
+
+                        {% if arts.getLocatieid() == result %}
+                            {% set del = 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if del == 0 %}
+                        <a href={{ path('deletelocationroute', {'id': result.getId()}) }}><button class="btn">Verwijderen</button></a>
+                    {% endif %}
+
+
                 </td>
             </tr>
         {% endfor   %}
