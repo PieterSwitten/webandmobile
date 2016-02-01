@@ -5,4 +5,44 @@
     <div class="jumbotron">
         <h1 class="text-center">Locatie Arts</h1>
     </div>
+    <table class="table">
+        <tr>
+            <th>Arts Naam</th>
+            <th>Lokaal Id</th>
+            <th>Lokaal Nummer </th>
+            <th>Lokaal Adres</th>
+            <th>Locatie Wijzigen</th>
+        </tr>
+        {% for arts in artsen %}
+            <tr>
+            <td>
+            {{ arts.getNaam() }}  {{ arts.getActhernaam() }}
+            </td>
+
+                    {% for locatie in locaties %}
+
+                        {%  if (arts.getLocatieid() == locatie) %}
+                            <td>{{ locatie.getId() }} </td>
+                            <td>{{ locatie.getLokaal() }}</td>
+                            <td>{{ locatie.getAdres() }}</td>
+                        {%  endif %}
+                    {% endfor %}
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Locatie
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            {% for locatie in locaties %}
+                                <li><a href={{ path("updateLocatieArts", {'locatie': locatie.getId(), 'arts': arts.getId()}) }}>{{ locatie.getId }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </td>
+
+
+
+            </tr>
+        {% endfor %}
+            </table>
 {% endblock %}

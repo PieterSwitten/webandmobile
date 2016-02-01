@@ -62,6 +62,104 @@ class Uren
      */
     private $userid;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTijd()
+    {
+        return $this->tijd;
+    }
+
+    /**
+     * @param \DateTime $tijd
+     */
+    public function setTijd($tijd)
+    {
+        $this->tijd = $tijd;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatum()
+    {
+        return $this->datum;
+    }
+
+    /**
+     * @param \DateTime $datum
+     */
+    public function setDatum($datum)
+    {
+        $this->datum = $datum;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOpmerkingen()
+    {
+        return $this->opmerkingen;
+    }
+
+    /**
+     * @param string $opmerkingen
+     */
+    public function setOpmerkingen($opmerkingen)
+    {
+        $this->opmerkingen = $opmerkingen;
+    }
+
+    /**
+     * @return \Arts
+     */
+    public function getArtsid()
+    {
+        return $this->artsid;
+    }
+
+    /**
+     * @param \Arts $artsid
+     */
+    public function setArtsid($artsid)
+    {
+        $this->artsid = $artsid;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    /**
+     * @param \User $userid
+     */
+    public function setUserid($userid)
+    {
+        $this->userid = $userid;
+    }
+
+
+
 
 }
 

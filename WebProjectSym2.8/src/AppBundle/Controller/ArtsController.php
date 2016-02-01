@@ -86,7 +86,7 @@ class ArtsController extends Controller
             // Update the 'brochure' property to store the PDF file name
             // instead of its contents
 
-            $em = $this->getDoctrine()->getManager();
+                $em = $this->getDoctrine()->getManager();
             $arts = $em->getRepository('AppBundle:Arts')->find($ids);
 
 

@@ -85,6 +85,13 @@ class Arts
     {
         return $this->locatieid;
     }
+    /**
+     * @param \Locaties $locatieid
+     */
+    public function setLocatieid($locatieid)
+    {
+        $this->locatieid = $locatieid;
+    }
 
 
 
@@ -201,5 +208,6 @@ class Arts
     {
         $this->profielfoto = $profielfoto;
     }
+
 }
 
