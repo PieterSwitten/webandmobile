@@ -19,10 +19,8 @@ class HomeController extends Controller
         return $this->render('home/index.html.twig');
     }
 
-
-
     /**
-     * @Route("/userpage", name="userroute")
+     * @Route("/userpages", name="userroute")
      */
     public function userAction(Request $request)
     {

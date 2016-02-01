@@ -33,7 +33,6 @@ class AdminController extends Controller
      */
     public function artsControl(Request $request)
     {
-
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Arts');
 
@@ -311,10 +310,40 @@ class AdminController extends Controller
      */
     public function locationArtsedit(Request $request)
     {
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Arts');
+
+        $arts = $repository->findAll();
+
+        $repositoryLoc = $this->getDoctrine()->getRepository('AppBundle:Locaties');
+        $location = $repositoryLoc->findAll();
 
 
 
 
-        return $this->render('admin/locationarts.html.twig');
+        return $this->render('admin/locationarts.html.twig', array('locaties' => $location, 'artsen' => $arts));
     }
+    /**
+     * @Route("/updatelocatieartspage/{locatie}/{arts}",defaults={"locatie" = 1, "arts"= 1}, name="updateLocatieArts")
+     */
+    public function UpdatelocationArtsAction(Request $request, $locatie, $arts) {
+
+        $artsid = new Arts();
+        $reposArts = $this->getDoctrine()
+            ->getRepository('AppBundle:Arts');
+        $artsen = $reposArts->find($arts);
+        $id = $artsen->getId();
+        $reposloc = $this->getDoctrine()
+            ->getRepository('AppBundle:Locaties');
+        $locaties = $reposloc->find($locatie);
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $artsid = $em->getRepository('AppBundle:Arts')->find($id);
+        $artsid->setLocatieid($locaties);
+
+        $em->flush();
+        return $this->redirectToRoute('locationartsroute');
+       }
 }
