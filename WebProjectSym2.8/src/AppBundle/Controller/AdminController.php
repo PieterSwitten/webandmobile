@@ -17,7 +17,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\Validator\Constraints\Null;
+use AppBundle\Entity\Locaties;
+use Symfony\Bridge\Doctrine;
 class AdminController extends Controller
 {
     /**
@@ -346,4 +348,24 @@ class AdminController extends Controller
         $em->flush();
         return $this->redirectToRoute('locationartsroute');
        }
+
+    /**
+     * @Route("/DeletelocatieArts/{id}", defaults={"id"=1 }, name="deletelocatieArtsroute")
+     */
+    public function deletelocatieArtsAction(Request $request,$id) {
+        $locatie = new Locaties();
+        $artid = new Arts();
+        $reposArts = $this->getDoctrine()
+            ->getRepository('AppBundle:Arts');
+        $artsen = $reposArts->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $artsid = $em->getRepository('AppBundle:Arts')->find($id);
+        $artsid->setLocatieid(NULL);
+
+
+        $em->flush();
+
+        return $this->redirectToRoute('locationartsroute');
+    }
 }
