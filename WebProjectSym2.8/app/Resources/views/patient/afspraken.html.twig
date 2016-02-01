@@ -9,7 +9,7 @@
             <span class="caret"></span></button>
         <ul class="dropdown-menu">
             {% for arts in artsen %}
-                <li><a href="#">{{ arts.getNaam }} {{ arts.getActhernaam }}</a></li>
+                <li><a href={{ path("patientAfsprakenroute", {'arts': arts.getNaam() ~ " " ~ arts.getActhernaam(), 'dag': dag}) }}>{{ arts.getNaam }} {{ arts.getActhernaam }}</a></li>
             {% endfor %}
         </ul>
     </div>
@@ -18,40 +18,45 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dagen
             <span class="caret"></span></button>
         <ul class="dropdown-menu">
-            {% if  "now"|date("D") != 'Sun' %}
-                <li><a href="#">{{ "now"|date("D d M") }}</a></li>
-            {% endif %}
-            {% if  "now"|date_modify("+1 day")|date("D") != 'Sun' %}
-                <li><a href="#">{{ "now"|date_modify("+1 day")|date("D d M") }}</a></li>
-            {% endif %}
-            {% if  "now"|date_modify("+2 day")|date("D") != 'Sun' %}
-                <li><a href="#">{{ "now"|date_modify("+2 day")|date("D d M") }}</a></li>
-            {% endif %}
-            {% if  "now"|date_modify("+3 day")|date("D") != 'Sun' %}
-                <li><a href="#">{{ "now"|date_modify("+3 day")|date("D d M") }}</a></li>
-            {% endif %}
-            {% if  "now"|date_modify("+4 day")|date("D") != 'Sun' %}
-                <li><a href="#">{{ "now"|date_modify("+4 day")|date("D d M") }}</a></li>
-            {% endif %}
-            {% if  "now"|date_modify("+5 day")|date("D") != 'Sun' %}
-                <li><a href="#">{{ "now"|date_modify("+5 day")|date("D d M") }}</a></li>
-            {% endif %}
-            {% if  "now"|date_modify("+6 day")|date("D") != 'Sun' %}
-                <li><a href="#">{{ "now"|date_modify("+6 day")|date("D d M") }}</a></li>
-            {% endif %}
+            {% for i in 0..6 %}
+                {% if  "now"|date_modify("+"~ i ~ "day")|date("D") != 'Sun' %}
+                    <li><a href={{ path("patientAfsprakenroute", {'dag': "now"|date_modify("+" ~ i ~ "day")|date("l"), 'arts':arts}) }}>{{ "now"|date_modify("+" ~ i ~ "day")|date("l d M") }}</a></li>
+                {% endif %}
+            {% endfor %}
         </ul>
     </div>
+    <br>
     <table class="table">
         <tr>
+            <th>Dokter</th>
+            <th>Dag</th>
             <th>Uur</th>
+            <th>Reservatie</th>
             <th>Acties</th>
         </tr>
-        {% for i in 1..16 %}
-            <td>
-                {% if i%2 == 0 %}
-                {%  %}
-            </td>
+        {% for i in 0..16 %}
+            <tr>
+                <td>{{ arts }}</td>
+                <td>{{ dag }}</td>
+                {% set  %}
+                <td>{{ '9:00'|date_modify('+' ~ i*30 ~ 'minutes')|date('h:i') }}</td>
+                <td>
+                    {% if (arts != 'Niet geselecteerd') and (dag != 'Niet geselecteerd') %}
+                        Niet bezet
+                    {% endif %}
+                </td>
+                <td>
+                    {% if arts == 'Niet geselecteerd' %}
+                        Selecteer een arts
+                    {% elseif dag == 'Niet geselecteerd' %}
+                        Selecteer een dag
+                    {% else %}
+                        <a href="#"><button class="btn">Reserveren</button></a>
+                    {% endif %}
+                </td>
+            </tr>
         {% endfor %}
+
     </table>
 
 {% endblock %}

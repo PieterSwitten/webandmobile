@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Uren;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,9 +33,9 @@ class PatientController extends Controller {
     }
 
     /**
-     * @Route("/afspraken", name="patientAfsprakenroute")
+     * @Route("/afspraken/{arts}/{dag}", defaults={"arts"="Niet geselecteerd", "dag"="Niet geselecteerd"}, name="patientAfsprakenroute")
      */
-    public function afsprakenAction(Request $request)
+    public function afsprakenAction(Request $request, $arts, $dag)
     {
         $reposArts = $this->getDoctrine()
             ->getRepository('AppBundle:Arts');
@@ -44,7 +45,15 @@ class PatientController extends Controller {
         $reposUren = $this->getDoctrine()->getRepository('AppBundle:Uren');
         $uren = $reposUren->findAll();
 
-        return $this->render('patient/afspraken.html.twig', array('artsen' => $artsen, 'uren' => $uren));
+        return $this->render('patient/afspraken.html.twig', array('artsen' => $artsen, 'arts' => $arts, 'dag' => $dag, 'uren' => $uren));
 
+    }
+
+    /**
+     * @Route("/reserveren/{date}", name="reserverenroute")
+     */
+    public function reserverenAction(Request $request, $datetime)
+    {
+        return $this->render('makeReservation.html.twig', array('datetime' => $datetime));
     }
 }
