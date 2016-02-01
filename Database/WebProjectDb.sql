@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2016 at 11:44 
+-- Generation Time: Jan 22, 2016 at 10:02 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `arts` (
   `id` int(11) NOT NULL,
-  `naam` varchar(255) NOT NULL,
-  `acthernaam` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `adress` varchar(255) NOT NULL,
-  `profielfoto` varchar(255) NOT NULL,
+  `naam` varchar(255) DEFAULT NULL,
+  `acthernaam` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `adress` varchar(255) DEFAULT NULL,
+  `profielfoto` varchar(255) DEFAULT NULL,
   `userid` int(11) DEFAULT NULL,
-  `locatieid` int(11) NOT NULL
+  `locatieid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -99,11 +99,12 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `rolesstring`) VALUES
 (1, 'Dylan', '$2y$13$6eYagWVy/FKT8KjeJOJG3OST9jUqM7A5kSI8hkcd0hxuIcR4g.7JC', 'ROLE_USER ROLE_ARTS ROLE_ADMIN'),
 (2, 'Arts', '$2y$13$TIWMmXRXv98.nfpJT/ze/eqYPjOKnHuuFp.OswSawsVI6mzxWE/7W', 'ROLE_USER ROLE_ADMIN ROLE_ARTS'),
-(4, 'Doctor4', '$2y$13$LnImja8xUlNQK4DTxpq7W.Nv4b4zDUeHv900xYpR5TV7YHTzbOBr2', 'ROLE_USER ROLE_ARTS'),
-(5, 'Doctor5', '$2y$13$J8B2tkAr9LpMsecIuNBMx.h6CaXuKg14EZ2r2ALTyb3kq/asYhTXW', 'ROLE_USER ROLE_ARTS'),
-(6, 'Doctor2', '$2y$13$/3fIbfZPffy/YMxEbUfz1.BRfKfs5cskA07IiruBzJlDMWKZ5Qys6', 'ROLE_USER ROLE_ARTS'),
-(7, 'Doctor3', '$2y$13$V6OH0c1HCu2MlvsSwNoh5OlNPBA86JWVKFyHaU8sEeBVB1Iox5x3W', 'ROLE_USER ROLE_ARTS'),
-(9, 'Doctor1', '$2y$13$BvZPBmIRKH8y8YUdDMM.q.reSuOgPmfOBILgorBAQL8M0so1tKdYK', 'ROLE_USER ROLE_ARTS');
+(4, 'Doctor4', '$2y$13$LnImja8xUlNQK4DTxpq7W.Nv4b4zDUeHv900xYpR5TV7YHTzbOBr2', 'ROLE_USER'),
+(5, 'Doctor5', '$2y$13$J8B2tkAr9LpMsecIuNBMx.h6CaXuKg14EZ2r2ALTyb3kq/asYhTXW', 'ROLE_USER'),
+(6, 'Doctor2', '$2y$13$/3fIbfZPffy/YMxEbUfz1.BRfKfs5cskA07IiruBzJlDMWKZ5Qys6', 'ROLE_USER'),
+(7, 'Doctor3', '$2y$13$V6OH0c1HCu2MlvsSwNoh5OlNPBA86JWVKFyHaU8sEeBVB1Iox5x3W', 'ROLE_USER'),
+(9, 'Doctor1', '$2y$13$BvZPBmIRKH8y8YUdDMM.q.reSuOgPmfOBILgorBAQL8M0so1tKdYK', 'ROLE_USER'),
+(10, 'user', '$2y$13$pFXlRYmpdVNQdeCF7MgyHOVsJQ/8UB1BMTyAhPE3DfuXTAjsVTcCC', 'ROLE_USER');
 
 --
 -- Indexes for dumped tables
@@ -145,7 +146,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `arts`
 --
 ALTER TABLE `arts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `locaties`
 --
@@ -160,7 +161,7 @@ ALTER TABLE `uren`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
