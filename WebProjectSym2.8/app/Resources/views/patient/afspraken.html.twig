@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="text-center">Afspraak maken</h1>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dokters
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            {% for arts in artsen %}
+                <li><a href={{ path("patientAfsprakenroute", {'arts': arts.getNaam() ~ " " ~ arts.getActhernaam(), 'dag': dag}) }}>{{ arts.getNaam }} {{ arts.getActhernaam }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dagen
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            {% for i in 0..6 %}
+                {% if  "now"|date_modify("+"~ i ~ "day")|date("D") != 'Sun' %}
+                    <li><a href={{ path("patientAfsprakenroute", {'dag': "now"|date_modify("+" ~ i ~ "day")|date("l"), 'arts':arts}) }}>{{ "now"|date_modify("+" ~ i ~ "day")|date("l d M") }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <table class="table">
+        <tr>
+            <th>Dokter</th>
+            <th>Dag</th>
+            <th>Uur</th>
+            <th>Reservatie</th>
+            <th>Acties</th>
+        </tr>
+        {% for i in 0..16 %}
+            <tr>
+                <td>{{ arts }}</td>
+                <td>{{ dag }}</td>
+                <td>{{ '9:00'|date_modify('+' ~ i*30 ~ 'minutes')|date('h:i') }}</td>
+                <td>
+                    {% if (arts != 'Niet geselecteerd') and (dag != 'Niet geselecteerd') %}
+                        Niet bezet
+                    {% endif %}
+                </td>
+                <td>
+                    {% if arts == 'Niet geselecteerd' %}
+                        Selecteer een arts
+                    {% elseif dag == 'Niet geselecteerd' %}
+                        Selecteer een dag
+                    {% else %}
+                        <a href="#"><button class="btn">Reserveren</button></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

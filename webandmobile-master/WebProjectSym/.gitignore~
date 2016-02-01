@@ -1,0 +1,10 @@
+/build/
+/composer.phar
+/web/bundles/
+/var/
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+!var/sessions/.gitkeep
+/phpunit.xml
+!/.idea/workspace.xml
+

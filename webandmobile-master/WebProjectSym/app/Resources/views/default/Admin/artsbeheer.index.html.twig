@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArtsBeheer</title>
+</head>
+<body>
+<table>
+
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Naam
+            </th>
+            <th>
+                Achternaam
+            </th>
+            <th>
+                Adress
+            </th>
+        </tr>
+    {% for entity in entities %}
+        <tr>
+            <td> {{ entity.ArtsId }}</td>
+            <td> {{ entity.ArtsNaam }}</td>
+            <td> {{ entity.ArtsAchternaam }}</td>
+            <td> {{ entity.ArtsAdress }}</td>
+            <td> <a href={{ path("artsBewerk") }}>Bewerken</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

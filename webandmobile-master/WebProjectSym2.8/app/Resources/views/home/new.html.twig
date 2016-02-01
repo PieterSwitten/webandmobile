@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="text-center">Registreren</h1>
+    </div>
+
+    {{ form_start(form) }}
+    <table>
+        <tr>
+            <td>{{ form_label(form.username) }}&nbsp;&nbsp;</td>
+            <td>{{ form_widget(form.username) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.password) }}</td>
+            <td>{{ form_widget(form.password) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.Captcha) }}</td>
+            <td>{{ form_widget(form.Captcha) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_row(form.save) }}</td>
+        </tr>
+    </table>
+    {{ form_end(form) }}
+
+
+
+{% endblock %}

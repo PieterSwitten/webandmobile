@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="text-center">Aanpassen</h1>
+    </div>
+
+    {{ form_start(form) }}
+    <table>
+        <tr>
+            <td>{{ form_widget(form.id) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(form.naam) }}&nbsp;&nbsp;</td>
+            <td>{{ form_widget(form.naam) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.acthernaam) }}</td>
+            <td>{{ form_widget(form.acthernaam) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.email) }}</td>
+            <td>{{ form_widget(form.email) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.adress) }}</td>
+            <td>{{ form_widget(form.adress) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_row(form.profielfoto) }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>{{ form_row(form._token) }}</td>
+            <td>{{ form_errors(form) }}</td>
+            <td>{{ form_row(form.save) }}</td>
+        </tr>
+    </table>
+    {{ form_end(form) }}
+
+
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+    <form method="post">
+    {% for result in results %}
+        <table>
+            <tr>
+                <td colspan="3">
+                    <img  height="300px" src="images/profiel/{{ result.getId() }}.jpeg" id="img/{{ result.getId() }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td height="15px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Naam</label>
+                </td>
+                <td width="15px">
+
+                </td>
+                <td>
+                    <input type="text" disabled value="{{ result.getNaam() }}" title="Naam"/>
+                </td>
+
+            </tr>
+            <tr>
+                <td height="15px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Achternaam</label>
+                </td>
+                <td width="15px">
+
+                </td>
+                <td>
+                    <input type="text" disabled value="{{ result.getActhernaam() }}" title="Achternaam"/>
+                </td>
+            </tr>
+            <tr>
+                <td height="15px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Email</label>
+                </td>
+                <td width="15px">
+
+                </td>
+                <td>
+                    <input type="text" disabled value="{{ result.getEmail() }}" title="email" />
+                </td>
+            </tr>
+            <tr>
+                <td height="15px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Adres</label>
+                </td>
+                <td width="15px">
+
+                </td>
+                <td>
+                    <input type="text"  disabled value="{{ result.getAdress() }}" title="adress"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" >
+                    <a href="{{ path("artsprofielbewerkroute") }}"><input type="button" value="Bewerken" ></a>
+                </td>
+            </tr>
+        </table>
+        </form>
+        {% endfor    %}
+
+
+        {% endblock %}

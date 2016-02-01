@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="text-center">Admin paneel</h1>
+    </div>
+    <a href={{ path('artscontrolroute') }}><button class="btn">Artsen beheren</button></a><br><br>
+    <a href={{ path('locationcontrolroute') }}><button class="btn">Locaties beheren</button></a><br><br>
+    <a href={{ path('locationartsroute') }}><button class="btn">Locatie van arts beheren</button></a><br><br>
+{% endblock %}

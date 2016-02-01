@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+
+    {% for result in results %}
+        <div class="col-md-4">
+            <h2>{{ result.getNaam() }} {{ result.getActhernaam() }}</h2>
+
+
+            <img  height="300px" src="images/profiel/{{ result.getId() }}.jpeg" id="img/{{ result.getId() }}"/>
+        </div>
+
+    {% endfor    %}
+
+
+{% endblock %}

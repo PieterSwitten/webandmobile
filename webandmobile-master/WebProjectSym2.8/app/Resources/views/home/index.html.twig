@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+
+
+    <div class="jumbotron">
+        <h1 class="text-center">Welkom!</h1>
+        <h3 class="text-center">
+            Je bent
+            {% if is_granted('ROLE_USER') %}
+                als {{ app.User.Username  }}
+            {% else  %}
+                {{ app.user }}
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                 ingelogd (ADMIN)
+            {% elseif is_granted('ROLE_ARTS') %}
+                 ingelogd (ARTS)
+            {% elseif is_granted('ROLE_USER') %}
+                 ingelogd
+            {% else %}
+                niet ingelogd
+            {% endif %}
+
+        </h3>
+    </div>
+
+{% endblock %}
+
