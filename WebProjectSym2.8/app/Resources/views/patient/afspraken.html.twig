@@ -9,7 +9,7 @@
             <span class="caret"></span></button>
         <ul class="dropdown-menu">
             {% for arts in artsen %}
-                <li><a href={{ path("patientAfsprakenroute", {'arts': arts.getNaam() ~ " " ~ arts.getActhernaam(), 'dag': dag}) }}>{{ arts.getNaam }} {{ arts.getActhernaam }}</a></li>
+                <li><a href={{ path("patientAfsprakenroute", {'arts': arts.getNaam() ~ " " ~ arts.getActhernaam(), 'dag': dag, 'index': index}) }}>{{ arts.getNaam }} {{ arts.getActhernaam }}</a></li>
             {% endfor %}
         </ul>
     </div>
@@ -20,7 +20,7 @@
         <ul class="dropdown-menu">
             {% for i in 0..6 %}
                 {% if  "now"|date_modify("+"~ i ~ "day")|date("D") != 'Sun' %}
-                    <li><a href={{ path("patientAfsprakenroute", {'dag': "now"|date_modify("+" ~ i ~ "day")|date("l"), 'arts':arts}) }}>{{ "now"|date_modify("+" ~ i ~ "day")|date("l d M") }}</a></li>
+                    <li><a href={{ path("patientAfsprakenroute", {'dag': "now"|date_modify("+" ~ i ~ "day")|date("l"), 'arts':arts, 'index':i}) }}>{{ "now"|date_modify("+" ~ i ~ "day")|date("l d M") }}</a></li>
                 {% endif %}
             {% endfor %}
         </ul>
@@ -38,7 +38,8 @@
             <tr>
                 <td>{{ arts }}</td>
                 <td>{{ dag }}</td>
-                <td>{{ '9:00'|date_modify('+' ~ i*30 ~ 'minutes')|date('h:i') }}</td>
+                {% set date = '9:00'|date_modify('+' ~ i*30 ~ 'minutes')|date_modify('+' ~ index ~ 'day')|date('h:i') %}
+                <td>{{ date }}</td>
                 <td>
                     {% if (arts != 'Niet geselecteerd') and (dag != 'Niet geselecteerd') %}
                         Niet bezet
@@ -50,7 +51,7 @@
                     {% elseif dag == 'Niet geselecteerd' %}
                         Selecteer een dag
                     {% else %}
-                        <a href="#"><button class="btn">Reserveren</button></a>
+                        <a href={{ path('reserverenroute', {'date':date, 'arts':arts}) }}><button class="btn">Reserveren</button></a>
                     {% endif %}
                 </td>
             </tr>

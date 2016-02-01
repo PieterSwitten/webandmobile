@@ -33,9 +33,9 @@ class PatientController extends Controller {
     }
 
     /**
-     * @Route("/afspraken/{arts}/{dag}", defaults={"arts"="Niet geselecteerd", "dag"="Niet geselecteerd"}, name="patientAfsprakenroute")
+     * @Route("/afspraken/{arts}/{dag}/{index}", defaults={"arts"="Niet geselecteerd", "dag"="Niet geselecteerd", "index"=-1}, name="patientAfsprakenroute")
      */
-    public function afsprakenAction(Request $request, $arts, $dag)
+    public function afsprakenAction(Request $request, $arts, $dag, $index)
     {
         $reposArts = $this->getDoctrine()
             ->getRepository('AppBundle:Arts');
@@ -45,15 +45,16 @@ class PatientController extends Controller {
         $reposUren = $this->getDoctrine()->getRepository('AppBundle:Uren');
         $uren = $reposUren->findAll();
 
-        return $this->render('patient/afspraken.html.twig', array('artsen' => $artsen, 'arts' => $arts, 'dag' => $dag, 'uren' => $uren));
+        return $this->render('patient/afspraken.html.twig', array('artsen' => $artsen, 'arts' => $arts, 'dag' => $dag, 'uren' => $uren, 'index' => $index));
 
     }
 
     /**
-     * @Route("/reserveren/{date}", name="reserverenroute")
+     * @Route("/reserveren/{date}/{arts}", name="reserverenroute")
      */
-    public function reserverenAction(Request $request, $datetime)
+    public function reserverenAction(Request $request, $datetime, $arts)
     {
+
         return $this->render('makeReservation.html.twig', array('datetime' => $datetime));
     }
 }
