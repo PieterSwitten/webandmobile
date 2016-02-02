@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Uren;
 use AppBundle\Form\ArtsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Doctrine\ORM\EntityRepository;
@@ -40,11 +41,26 @@ class ArtsController extends Controller
     }
 
     /**
-     * @Route("/deleteappointments", name="deleteappointmentsroute")
+     * @Route("/deleteappointments/{dag}/{index}", defaults={"dag"="Niet geselecteerd", "index"=-1}, name="deleteappointmentsroute")
      */
-    public function deleteAppointmentsAction(Request $request)
+    public function deleteAppointmentsAction(Request $request, $dag, $index)
     {
-        return $this->render('arts/deleteappointments.html.twig');
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $reposArtsen = $this->getDoctrine()->getRepository('AppBundle:Arts');
+        $artsen = $reposArtsen->findAll();
+
+        foreach ($artsen as $arts) {
+            if ($arts->getUserid() == $user) {
+                $sendarts = $arts;
+            }
+        }
+
+        $reposUren = $this->getDoctrine()->getRepository('AppBundle:Uren');
+        $uren = $reposUren->findAll();
+
+        return $this->render('arts/deleteappointments.html.twig', array('dag' => $dag, 'uren' => $uren, 'index' => $index, 'logedinarts' => $sendarts));
     }
 
     /**
@@ -114,6 +130,69 @@ class ArtsController extends Controller
             'form' => $form->createView(),
         ));
 
+    }
+
+    /**
+     * @Route("/delete/{afspraakid}", name="artsverwijderafspraakroute")
+     */
+    public function deleteAppointmentAction(Request $request, $afspraakid)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //$arts = new Arts();
+        $uur = $em->getRepository('AppBundle:Uren')->find($afspraakid);
+        $uurid = $uur->getId();
+
+        if (!$uur) {
+            throw $this->createNotFoundException(
+                'No arts found for id '.$uurid
+            );
+        }
+
+
+        $em->remove($uur);
+        $em->flush();
+
+        return $this->redirectToRoute('deleteappointmentsroute');
+    }
+
+    /**
+     * @Route("/reserveer/{uurindex}/{dagindex}", name="blokroute")
+     */
+    public function blokAction(Request $request, $uurindex, $dagindex)
+    {
+        $today = date("Y-m-d");
+        $date = date('Y-m-d', strtotime($today . '+' . $dagindex . 'days'));
+        $time = date('9:00');
+        $uur = date('h:i', strtotime($time)+(60*30*$uurindex));
+
+
+        $datum = date($date . ' ' . $uur);
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $reposArtsen = $this->getDoctrine()->getRepository('AppBundle:Arts');
+        $artsen = $reposArtsen->findAll();
+
+        foreach ($artsen as $arts) {
+            if ($arts->getUserid() == $user) {
+                $sendarts = $arts;
+            }
+        }
+
+
+        $adduur = new Uren();
+        $adduur->setOpmerkingen('Geblokkeerd door arts');
+        $adduur->setDatum($datum);
+        $adduur->setUserid($user);
+        $adduur->setArtsid($sendarts);
+
+        $eme = $this->getDoctrine()->getManager();
+
+        $eme->persist($adduur);
+        $eme->flush();
+
+
+        return $this->redirectToRoute('deleteappointmentsroute');
     }
 
     function UpdateAction($data) {
