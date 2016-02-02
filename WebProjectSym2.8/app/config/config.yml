@@ -67,3 +67,7 @@ swiftmailer:
     spool:     { type: memory }
 
 gregwar_captcha: ~
+
+fos_rest:
+    routing_loader:
+        default_format: json
