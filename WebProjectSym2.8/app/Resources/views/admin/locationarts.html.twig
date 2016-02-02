@@ -23,9 +23,12 @@
 
                         {%  if (arts.getLocatieid() == locatie) %}
                             <td>{{ locatie.getId() }} </td>
-                            <td>{{ locatie.getLokaal() }}</td>
-                            <td>{{ locatie.getAdres() }}</td>
-                        {%  endif %}
+                            <td> {{ locatie.getLokaal() }}</td>
+                            <td>   {{ locatie.getAdres() }}</td>
+                        {%  elseif (arts.getLocatieid() == null) %}
+                            <td tabindex="1"></td>
+                            <td tabindex="2"> </td>
+                            {% endif %}
                     {% endfor %}
                 <td>
                     <div class="dropdown">
@@ -38,6 +41,9 @@
                         </ul>
                     </div>
 
+                </td>
+                <td>
+                    <a href={{ path('deletelocatieArtsroute', {'id': arts.getId()}) }}><button class="btn">Verwijderen</button></a>
                 </td>
 
 
