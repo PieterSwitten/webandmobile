@@ -24,19 +24,12 @@ class Uren
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="tijd", type="time", nullable=false)
-     */
-    private $tijd;
-
-    /**
-     * @var \DateTime
-     *
      * @ORM\Column(name="datum", type="date", nullable=false)
      */
     private $datum;
 
     /**
-     * @var string
+     * @var \Date
      *
      * @ORM\Column(name="opmerkingen", type="string", length=1000, nullable=false)
      */
@@ -76,22 +69,6 @@ class Uren
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getTijd()
-    {
-        return $this->tijd;
-    }
-
-    /**
-     * @param \DateTime $tijd
-     */
-    public function setTijd($tijd)
-    {
-        $this->tijd = $tijd;
     }
 
     /**
