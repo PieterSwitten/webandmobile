@@ -39,8 +39,6 @@
                 <td>{{ arts }}</td>
                 <td>{{ dag }}</td>
                 {% set date = '9:00'|date_modify('+' ~ i*30 ~ 'minutes +' ~ index ~ 'day')|date('h:i') %}
-                {% set date2 = date|date_modify('+' ~ index ~ 'days')|date('h:i d-m') %}
-                {{ date2 }}
                 <td>{{ date }}</td>
                 <td>
                     {% if (arts != 'Niet geselecteerd') and (dag != 'Niet geselecteerd') %}

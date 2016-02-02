@@ -58,4 +58,16 @@ class PatientController extends Controller {
 
         return $this->render('patient/makereservation.html.twig', array('uurindex' => $uurindex, 'dagindex' => $dagindex, 'arts' => $arts));
     }
+
+    /**
+     * @Route("/reserveren/{uurindex}/{dagindex}/{arts}/{opmerking}", name="reserveerroute")
+     */
+    public function reserveerAction(Request $request, $uurindex, $dagindex, $arts, $opmerking)
+    {
+        $today = date("Y-m-d");
+        $format =
+        $date = new DateTime('');
+
+        return $this->render('patient/makereservation.html.twig', array('uurindex' => $uurindex, 'dagindex' => $dagindex, 'arts' => $arts));
+    }
 }

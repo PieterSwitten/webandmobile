@@ -4,9 +4,13 @@
     <div class="jumbotron">
         <h1 class="text-center">Afspraak maken</h1>
     </div>
-    <h1>{{ '9:00'|date_modify('+' ~ dagindex ~ 'days +' ~ uurindex*30 ~ 'minutes')|date('h:i d-m') }}</h1>
-    <h1>{{ arts }}</h1>
-
+    {% set datum = '9:00'|date_modify('+' ~ dagindex ~ 'days +' ~ uurindex*30 ~ 'minutes') %}
+    <h1>Afspraak op {{ datum|date('d F') }} om {{ datum|date('h:i') }}</h1>
+    <h1>Bij dokter {{ arts }}</h1>
+    <hr>
+    <br>
     <h3>Opmerkingen</h3>
-    <textarea></textarea>
+    <textarea cols="50" rows="8"></textarea><br>
+
+    <a href={{ path('') }}><button class="btn">Reservatie vastleggen</button></a>
 {% endblock %}
