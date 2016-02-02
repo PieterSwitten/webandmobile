@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Arts;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class PatientController extends Controller {
@@ -60,14 +61,23 @@ class PatientController extends Controller {
     }
 
     /**
-     * @Route("/reserveren/{uurindex}/{dagindex}/{arts}/{opmerking}", name="reserveerroute")
+     * @Route("/reserveer/{uurindex}/{dagindex}/{arts}", name="reserveerroute")
      */
-    public function reserveerAction(Request $request, $uurindex, $dagindex, $arts, $opmerking)
+    public function reserveerAction(Request $request, $uurindex, $dagindex, $arts)
     {
+        if (isset($_POST['submit'])) {
+            $opmerking = $_POST['opmerkingArea'];
+        }
         $today = date("Y-m-d");
-        $format =
-        $date = new DateTime('');
+        $year = date("Y");
+        $month = date("m");
+        $day = date("d");
+        $day = $day + $dagindex;
+        $today = $today .
 
-        return $this->render('patient/makereservation.html.twig', array('uurindex' => $uurindex, 'dagindex' => $dagindex, 'arts' => $arts));
+        $datum = new DateTime();
+
+
+        return new Response($opmerking);
     }
 }
