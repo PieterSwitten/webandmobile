@@ -4,4 +4,66 @@
     <div class="jumbotron">
         <h1>Afspraken verwijderen</h1>
     </div>
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dagen
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            {% for i in 0..6 %}
+                {% if  "now"|date_modify("+"~ i ~ "day")|date("D") != 'Sun' %}
+                    <li><a href={{ path("patientAfsprakenroute", {'dag': "now"|date_modify("+" ~ i ~ "day")|date("l"), 'index':i}) }}>{{ "now"|date_modify("+" ~ i ~ "day")|date("l d M") }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <table class="table">
+        <tr>
+            <th>Dag</th>
+            <th>Uur</th>
+            <th>Reservatie</th>
+            <th>Acties</th>
+        </tr>
+        {% for i in 0..16 %}
+            <tr>
+                <td>{{ dag }}</td>
+                {% set date = '9:00'|date_modify('+' ~ i*30 ~ 'minutes +' ~ index ~ 'day')|date('h:i') %}
+                {% set testdate = '9:00'|date_modify('+' ~ i*30 ~ 'minutes +' ~ index ~ 'day')|date('Y-m-d h:i') %}
+                <td>{{ date }}</td>
+                <td>
+                    {% set bezetBool = false %}
+                    {% set bezetUser = -1 %}
+                    {% set afspraakid = -1 %}
+                    {% if (arts != 'Niet geselecteerd') and (dag != 'Niet geselecteerd') %}
+
+                        {% for uur in uren %}
+                            {% if (uur.getDatum() == testdate) %}
+                                {% set artsnaam = uur.getArtsid().getNaam() ~ ' ' ~ uur.getArtsid().getActhernaam() %}
+                                {% if (artsnaam == arts) %}
+                                    {% set bezetBool = true %}
+                                    {% set bezetUser = uur.getUserid().getId() %}
+                                    {% set afspraakid = uur.getId() %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if bezetBool %}
+                            Bezet
+                        {% else %}
+                            Niet bezet
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if arts == 'Niet geselecteerd' %}
+                        Selecteer een arts
+                    {% elseif dag == 'Niet geselecteerd' %}
+                        Selecteer een dag
+                    {% elseif bezetUser == logedinId %}
+                        <a href={{ path('verwijderafspraakroute', {'afspraakid':afspraakid}) }}><button class="btn">Verwijderen</button></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
 {% endblock %}
