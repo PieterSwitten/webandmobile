@@ -38,7 +38,9 @@
             <tr>
                 <td>{{ arts }}</td>
                 <td>{{ dag }}</td>
-                {% set date = '9:00'|date_modify('+' ~ i*30 ~ 'minutes')|date_modify('+' ~ index ~ 'day')|date('h:i') %}
+                {% set date = '9:00'|date_modify('+' ~ i*30 ~ 'minutes +' ~ index ~ 'day')|date('h:i') %}
+                {% set date2 = date|date_modify('+' ~ index ~ 'days')|date('h:i d-m') %}
+                {{ date2 }}
                 <td>{{ date }}</td>
                 <td>
                     {% if (arts != 'Niet geselecteerd') and (dag != 'Niet geselecteerd') %}
@@ -51,7 +53,7 @@
                     {% elseif dag == 'Niet geselecteerd' %}
                         Selecteer een dag
                     {% else %}
-                        <a href={{ path('reserverenroute', {'date':date, 'arts':arts}) }}><button class="btn">Reserveren</button></a>
+                        <a href={{ path('reserverenroute', {'uurindex':i, 'dagindex': index, 'arts':arts}) }}><button class="btn">Reserveren</button></a>
                     {% endif %}
                 </td>
             </tr>

@@ -50,11 +50,12 @@ class PatientController extends Controller {
     }
 
     /**
-     * @Route("/reserveren/{date}/{arts}", name="reserverenroute")
+     * @Route("/reserveren/{uurindex}/{dagindex}/{arts}", name="reserverenroute")
      */
-    public function reserverenAction(Request $request, $datetime, $arts)
+    public function reserverenAction(Request $request, $uurindex, $dagindex, $arts)
     {
 
-        return $this->render('makeReservation.html.twig', array('datetime' => $datetime));
+
+        return $this->render('patient/makereservation.html.twig', array('uurindex' => $uurindex, 'dagindex' => $dagindex, 'arts' => $arts));
     }
 }

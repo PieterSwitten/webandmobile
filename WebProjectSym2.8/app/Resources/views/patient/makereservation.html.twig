@@ -4,6 +4,9 @@
     <div class="jumbotron">
         <h1 class="text-center">Afspraak maken</h1>
     </div>
-    <h1 class="text-center">{{  }}</h1>
+    <h1>{{ '9:00'|date_modify('+' ~ dagindex ~ 'days +' ~ uurindex*30 ~ 'minutes')|date('h:i d-m') }}</h1>
+    <h1>{{ arts }}</h1>
 
+    <h3>Opmerkingen</h3>
+    <textarea></textarea>
 {% endblock %}
