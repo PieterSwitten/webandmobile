@@ -39,10 +39,29 @@
                 <td>{{ arts }}</td>
                 <td>{{ dag }}</td>
                 {% set date = '9:00'|date_modify('+' ~ i*30 ~ 'minutes +' ~ index ~ 'day')|date('h:i') %}
+                {% set testdate = '9:00'|date_modify('+' ~ i*30 ~ 'minutes +' ~ index ~ 'day')|date('Y-m-d h:i') %}
                 <td>{{ date }}</td>
                 <td>
+                    {% set bezetBool = false %}
+                    {% set bezetUser = -1 %}
+                    {% set afspraakid = -1 %}
                     {% if (arts != 'Niet geselecteerd') and (dag != 'Niet geselecteerd') %}
-                        Niet bezet
+
+                        {% for uur in uren %}
+                            {% if (uur.getDatum() == testdate) %}
+                                {% set artsnaam = uur.getArtsid().getNaam() ~ ' ' ~ uur.getArtsid().getActhernaam() %}
+                                {% if (artsnaam == arts) %}
+                                    {% set bezetBool = true %}
+                                    {% set bezetUser = uur.getUserid().getId() %}
+                                    {% set afspraakid = uur.getId() %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if bezetBool %}
+                            Bezet
+                        {% else %}
+                            Niet bezet
+                        {% endif %}
                     {% endif %}
                 </td>
                 <td>
@@ -50,8 +69,10 @@
                         Selecteer een arts
                     {% elseif dag == 'Niet geselecteerd' %}
                         Selecteer een dag
-                    {% else %}
+                    {% elseif bezetBool != true %}
                         <a href={{ path('reserverenroute', {'uurindex':i, 'dagindex': index, 'arts':arts}) }}><button class="btn">Reserveren</button></a>
+                    {% elseif bezetUser == logedinId %}
+                        <a href={{ path('verwijderafspraakroute', {'afspraakid':afspraakid}) }}><button class="btn">Verwijderen</button></a>
                     {% endif %}
                 </td>
             </tr>

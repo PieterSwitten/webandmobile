@@ -46,7 +46,10 @@ class PatientController extends Controller {
         $reposUren = $this->getDoctrine()->getRepository('AppBundle:Uren');
         $uren = $reposUren->findAll();
 
-        return $this->render('patient/afspraken.html.twig', array('artsen' => $artsen, 'arts' => $arts, 'dag' => $dag, 'uren' => $uren, 'index' => $index));
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userid = $user->getId();
+
+        return $this->render('patient/afspraken.html.twig', array('artsen' => $artsen, 'arts' => $arts, 'dag' => $dag, 'uren' => $uren, 'index' => $index, 'logedinId' => $userid));
 
     }
 
@@ -58,6 +61,29 @@ class PatientController extends Controller {
 
 
         return $this->render('patient/makereservation.html.twig', array('uurindex' => $uurindex, 'dagindex' => $dagindex, 'arts' => $arts));
+    }
+
+    /**
+     * @Route("/delete/{afspraakid}", name="verwijderafspraakroute")
+     */
+    public function deleteAppointmentAction(Request $request, $afspraakid)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //$arts = new Arts();
+        $uur = $em->getRepository('AppBundle:Uren')->find($afspraakid);
+        $uurid = $uur->getId();
+
+        if (!$uur) {
+            throw $this->createNotFoundException(
+                'No arts found for id '.$uurid
+            );
+        }
+
+
+        $em->remove($uur);
+        $em->flush();
+
+        return $this->redirectToRoute('patientAfsprakenroute');
     }
 
     /**
