@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Arts;
-use Symfony\Component\Validator\Constraints\DateTime;
+use \DateTime;
 
 
 class PatientController extends Controller {
@@ -68,16 +68,40 @@ class PatientController extends Controller {
         if (isset($_POST['submit'])) {
             $opmerking = $_POST['opmerkingArea'];
         }
+
         $today = date("Y-m-d");
-        $year = date("Y");
-        $month = date("m");
-        $day = date("d");
-        $day = $day + $dagindex;
-        $today = $today .
+        $date = date('Y-m-d', strtotime($today . '+' . $dagindex . 'days'));
+        $time = date('9:00');
+        $uur = date('h:i', strtotime($time)+(60*30*$uurindex));
 
-        $datum = new DateTime();
+        $em = $this->getDoctrine()->getManager();
+        $artsen = $em->getRepository('AppBundle:Arts')->findAll();
+        foreach ($artsen as $item) {
+            $test_string = $item->getNaam() . ' ' . $item->getActhernaam();
+            if ($test_string == $arts) {
+                $artsid = $item->getId();
+            }
+        }
+
+        $artsdata = $em->getRepository('AppBundle:Arts')->find($artsid);
+
+        $datum = date($date . ' ' . $uur);
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
 
-        return new Response($opmerking);
+        $adduur = new Uren();
+        $adduur->setOpmerkingen($opmerking);
+        $adduur->setDatum($datum);
+        $adduur->setUserid($user);
+        $adduur->setArtsid($artsdata);
+
+        $eme = $this->getDoctrine()->getManager();
+
+        $eme->persist($adduur);
+        $eme->flush();
+
+
+        return $this->redirectToRoute('patientAfsprakenroute');
     }
 }

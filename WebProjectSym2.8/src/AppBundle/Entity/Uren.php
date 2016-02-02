@@ -24,7 +24,7 @@ class Uren
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datum", type="date", nullable=false)
+     * @ORM\Column(name="datum", type="string", nullable=false)
      */
     private $datum;
 
