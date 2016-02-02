@@ -133,9 +133,9 @@ class ArtsController extends Controller
     }
 
     /**
-     * @Route("/delete/{afspraakid}", name="artsverwijderafspraakroute")
+     * @Route("/delete/{afspraakid}/{dagindex}/{dag}", name="artsverwijderafspraakroute")
      */
-    public function deleteAppointmentAction(Request $request, $afspraakid)
+    public function deleteAppointmentAction(Request $request, $afspraakid, $dagindex, $dag)
     {
         $em = $this->getDoctrine()->getManager();
         //$arts = new Arts();
@@ -152,13 +152,13 @@ class ArtsController extends Controller
         $em->remove($uur);
         $em->flush();
 
-        return $this->redirectToRoute('deleteappointmentsroute');
+        return $this->redirectToRoute('deleteappointmentsroute', array('dag' => $dag, 'index' => $dagindex));
     }
 
     /**
-     * @Route("/reserveer/{uurindex}/{dagindex}", name="blokroute")
+     * @Route("/reserveer/{uurindex}/{dagindex}/{dag}", name="blokroute")
      */
-    public function blokAction(Request $request, $uurindex, $dagindex)
+    public function blokAction(Request $request, $uurindex, $dagindex, $dag)
     {
         $today = date("Y-m-d");
         $date = date('Y-m-d', strtotime($today . '+' . $dagindex . 'days'));
@@ -192,7 +192,7 @@ class ArtsController extends Controller
         $eme->flush();
 
 
-        return $this->redirectToRoute('deleteappointmentsroute');
+        return $this->redirectToRoute('deleteappointmentsroute', array('dag' => $dag, 'index' => $dagindex));
     }
 
     function UpdateAction($data) {
