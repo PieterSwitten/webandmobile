@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2016 at 05:22 
+-- Generation Time: Feb 02, 2016 at 02:09 
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -75,7 +75,7 @@ CREATE TABLE `uren` (
   `id` int(11) NOT NULL,
   `artsid` int(11) DEFAULT NULL,
   `userid` int(11) DEFAULT NULL,
-  `datum` varchar(255) NOT NULL,
+  `datum` datetime NOT NULL,
   `opmerkingen` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -128,8 +128,8 @@ ALTER TABLE `locaties`
 --
 ALTER TABLE `uren`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `uren_ibfk_1` (`artsid`),
-  ADD KEY `uren_ibfk_2` (`userid`);
+  ADD UNIQUE KEY `artsid` (`artsid`),
+  ADD UNIQUE KEY `userid` (`userid`);
 
 --
 -- Indexes for table `user`
