@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e45ba523-79eb-4a3f-a0aa-d06fd004a916" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Database/WebProjectDb.sql" afterPath="$PROJECT_DIR$/Database/WebProjectDb.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig" afterPath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php" afterPath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Uren.php" afterPath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Uren.php" />
     </list>
     <ignored path="gitrepos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PatientController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PatientController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.88685346">
-              <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+            <state vertical-scroll-proportion="-29.916666">
+              <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
               <folding>
                 <element signature="e#6#84#0#PHP" expanded="true" />
                 <element signature="e#119#145#0#PHP" expanded="true" />
@@ -39,11 +41,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makereservation.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArtsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-71.791664">
+              <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="148" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminpanel.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/adminpanel.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.25">
+              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppKernel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/AppKernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.75">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Uren.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Uren.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.5">
+              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="makereservation.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.375">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.16163793">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -54,6 +96,44 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-25.625">
               <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+              <folding>
+                <marker date="1454397292821" expanded="true" signature="403:652" placeholder="{% for arts in artsen ...%}" />
+                <marker date="1454397292821" expanded="true" signature="909:1271" placeholder="{% for i in 0..6 ...%}" />
+                <marker date="1454397292821" expanded="true" signature="945:1246" placeholder="{% if  &quot;now&quot;|date_modify(&quot;+&quot;~ i ~ &quot;day&quot;)|date(&quot;D&quot;) != 'Sun' ...%}" />
+                <marker date="1454397292821" expanded="true" signature="1505:2458" placeholder="{% for i in 0..16 ...%}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/AdminController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.1666665">
+              <caret line="186" column="8" selection-start-line="186" selection-start-column="8" selection-end-line="188" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Arts.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Arts.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.0">
+              <caret line="133" column="33" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="33" />
+              <folding>
+                <marker date="1454339269478" expanded="true" signature="274:1383" placeholder="{...}" />
+                <marker date="1454339269478" expanded="true" signature="1036:1144" placeholder=" @ORM\Column(type=&quot;string&quot;) ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.416666">
+              <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -117,8 +197,8 @@
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Uren.php" />
-        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php" />
+        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig" />
       </list>
     </option>
   </component>
@@ -720,13 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/AppKernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/bin/security-checker">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -924,24 +997,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/adminpanel.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/home/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="37" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="30" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -959,17 +1018,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Arts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <marker date="1454339269478" expanded="true" signature="274:1383" placeholder="{...}" />
-            <marker date="1454339269478" expanded="true" signature="1036:1144" placeholder=" @ORM\Column(type=&quot;string&quot;) ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Form/ArtsType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -982,14 +1030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.109091">
-          <caret line="220" column="7" selection-start-line="220" selection-start-column="7" selection-end-line="220" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1026,46 +1066,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.625">
+          <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+          <folding>
+            <marker date="1454397292821" expanded="true" signature="403:652" placeholder="{% for arts in artsen ...%}" />
+            <marker date="1454397292821" expanded="true" signature="909:1271" placeholder="{% for i in 0..6 ...%}" />
+            <marker date="1454397292821" expanded="true" signature="945:1246" placeholder="{% if  &quot;now&quot;|date_modify(&quot;+&quot;~ i ~ &quot;day&quot;)|date(&quot;D&quot;) != 'Sun' ...%}" />
+            <marker date="1454397292821" expanded="true" signature="1505:2458" placeholder="{% for i in 0..16 ...%}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/adminpanel.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.75">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.75">
-          <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
+        <state vertical-scroll-proportion="-71.791664">
+          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="148" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.416666">
+          <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1666665">
+          <caret line="186" column="8" selection-start-line="186" selection-start-column="8" selection-end-line="188" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Uren.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35560346">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="28" selection-end-column="18" />
+        <state vertical-scroll-proportion="-17.5">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig">
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Arts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.375">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.625">
-          <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-          <folding />
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="133" column="33" selection-start-line="133" selection-start-column="20" selection-end-line="133" selection-end-column="33" />
+          <folding>
+            <marker date="1454339269478" expanded="true" signature="274:1383" placeholder="{...}" />
+            <marker date="1454339269478" expanded="true" signature="1036:1144" placeholder=" @ORM\Column(type=&quot;string&quot;) ..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.88685346">
-          <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+        <state vertical-scroll-proportion="-29.916666">
+          <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
           <folding>
             <element signature="e#6#84#0#PHP" expanded="true" />
             <element signature="e#119#145#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16163793">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
