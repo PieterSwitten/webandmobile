@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2016 at 05:22 
+-- Generation Time: Feb 03, 2016 at 12:06 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `arts` (
   `id` int(11) NOT NULL,
-  `naam` varchar(255) NOT NULL,
-  `acthernaam` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `adress` varchar(255) NOT NULL,
-  `profielfoto` varchar(255) NOT NULL,
+  `naam` varchar(255) DEFAULT NULL,
+  `acthernaam` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `adress` varchar(255) DEFAULT NULL,
+  `profielfoto` varchar(255) DEFAULT NULL,
   `userid` int(11) DEFAULT NULL,
   `locatieid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -42,8 +42,9 @@ CREATE TABLE `arts` (
 --
 
 INSERT INTO `arts` (`id`, `naam`, `acthernaam`, `email`, `adress`, `profielfoto`, `userid`, `locatieid`) VALUES
-(1, 'Dylan', 'Gomes', 'Dylangomes@live.be', 'Drie Eikenstraat 17', '1.jpeg', 2, 1),
-(2, 'Kevin', 'Pieter', 'Kevin.Pieter@live.be', 'KevinsPieterlaan 1', '2.jpeg', 4, 2);
+(1, 'Dylan', 'Gomes', 'Dylangomes@live.be', 'Drie Eikenstraat 17', '1.jpeg', 2, 2),
+(2, 'Kevin', 'Pieter', 'Kevin.Pieter@live.be', 'KevinsPieterlaan 1', '2.jpeg', 4, 2),
+(3, 'user', 'd', 'userdmqoeilfj', 'oqiesf', '3.jpeg', 11, NULL);
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,10 @@ CREATE TABLE `locaties` (
 
 INSERT INTO `locaties` (`id`, `lokaal`, `adres`) VALUES
 (1, 'A1', 'Testlaan 5'),
-(2, 'A2', 'Testlaan 5');
+(2, 'A2', 'Testlaan 5'),
+(4, 'blblalokaal', 'blastraat'),
+(5, 'boelokaal', 'boestraat'),
+(6, 'A3', 'A3 straat');
 
 -- --------------------------------------------------------
 
@@ -78,6 +82,38 @@ CREATE TABLE `uren` (
   `datum` varchar(255) NOT NULL,
   `opmerkingen` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `uren`
+--
+
+INSERT INTO `uren` (`id`, `artsid`, `userid`, `datum`, `opmerkingen`) VALUES
+(3, 2, 2, '2016-02-05 12:00', 'testafspraak'),
+(4, 2, 2, '2016-02-04 10:00', 'azertyuiop'),
+(6, 1, 1, '2016-02-05 09:30', 'dfghjk'),
+(10, 1, 2, '2016-02-03 10:30', 'Geblokkeerd door arts'),
+(11, 1, 2, '2016-02-10 09:00', 'Geblokkeerd door arts'),
+(15, 1, 2, '2016-02-09 05:00', 'Geblokkeerd door arts'),
+(16, 1, 2, '2016-02-03 05:00', 'Geblokkeerd door arts'),
+(17, 1, 2, '2016-02-03 09:00', 'Geblokkeerd door arts'),
+(18, 2, 10, '2016-02-04 09:30', 'sdfghjk'),
+(19, 1, 2, '2016-02-04 09:00', 'fgh'),
+(20, 1, 2, '2016-02-04 09:30', 'Geblokkeerd door arts'),
+(21, 1, 2, '2016-02-04 10:00', 'Geblokkeerd door arts'),
+(22, 1, 2, '2016-02-13 09:00', 'Geblokkeerd door arts'),
+(23, 1, 2, '2016-02-13 09:30', 'Geblokkeerd door arts'),
+(24, 1, 2, '2016-02-13 10:00', 'Geblokkeerd door arts'),
+(25, 1, 2, '2016-02-13 10:30', 'Geblokkeerd door arts'),
+(26, 1, 2, '2016-02-13 11:00', 'Geblokkeerd door arts'),
+(27, 1, 2, '2016-02-13 11:30', 'Geblokkeerd door arts'),
+(28, 1, 2, '2016-02-13 12:00', 'Geblokkeerd door arts'),
+(29, 1, 2, '2016-02-13 12:30', 'Geblokkeerd door arts'),
+(30, 2, 2, '2016-02-05 09:00', 'buikgriep'),
+(32, 1, 2, '2016-02-08 09:00', 'Geblokkeerd door arts'),
+(33, 1, 2, '2016-02-08 09:30', 'Geblokkeerd door arts'),
+(34, 1, 2, '2016-02-08 10:00', 'Geblokkeerd door arts'),
+(35, 1, 2, '2016-02-05 09:00', 'dfghyujk'),
+(36, 1, 2, '2016-02-06 09:00', 'Geblokkeerd door arts');
 
 -- --------------------------------------------------------
 
@@ -103,7 +139,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `rolesstring`) VALUES
 (5, 'Doctor5', '$2y$13$J8B2tkAr9LpMsecIuNBMx.h6CaXuKg14EZ2r2ALTyb3kq/asYhTXW', 'ROLE_USER ROLE_ARTS'),
 (6, 'Doctor2', '$2y$13$/3fIbfZPffy/YMxEbUfz1.BRfKfs5cskA07IiruBzJlDMWKZ5Qys6', 'ROLE_USER ROLE_ARTS'),
 (7, 'Doctor3', '$2y$13$V6OH0c1HCu2MlvsSwNoh5OlNPBA86JWVKFyHaU8sEeBVB1Iox5x3W', 'ROLE_USER ROLE_ARTS'),
-(9, 'Doctor1', '$2y$13$BvZPBmIRKH8y8YUdDMM.q.reSuOgPmfOBILgorBAQL8M0so1tKdYK', 'ROLE_USER ROLE_ARTS');
+(9, 'Doctor1', '$2y$13$BvZPBmIRKH8y8YUdDMM.q.reSuOgPmfOBILgorBAQL8M0so1tKdYK', 'ROLE_USER ROLE_ARTS'),
+(10, 'gebruiker', '$2y$13$.pR7.Ss8TlDAzsn0wTUSC.rSp59c4xHz7fqQvsxKxfysaUvg5.uyC', 'ROLE_USER'),
+(11, 'userd', '$2y$13$vEWT16u7jS7CCc6Krc6tputfpfxDExZyoK..YDwOBeEpF0TIEkvcq', 'ROLE_USER ROLE_ARTS');
 
 --
 -- Indexes for dumped tables
@@ -145,22 +183,22 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `arts`
 --
 ALTER TABLE `arts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `locaties`
 --
 ALTER TABLE `locaties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `uren`
 --
 ALTER TABLE `uren`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
