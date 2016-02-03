@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e45ba523-79eb-4a3f-a0aa-d06fd004a916" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebProjectSym2.8/phpunit-4.8.22.phar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gitrepos.iml" afterPath="$PROJECT_DIR$/.idea/gitrepos.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig" afterPath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/base.html.twig" />
     </list>
     <ignored path="gitrepos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,6 +25,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.25">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="deleteappointments.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/deleteappointments.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -36,24 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PatientController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.041667">
-              <caret line="89" column="87" selection-start-line="89" selection-start-column="60" selection-end-line="89" selection-end-column="87" />
-              <folding>
-                <element signature="e#6#84#0#PHP" expanded="true" />
-                <element signature="e#119#145#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArtsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArtsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51508623">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.2916665">
+              <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
               <folding>
                 <element signature="e#119#145#0#PHP" expanded="true" />
               </folding>
@@ -74,8 +70,8 @@
       <file leaf-file-name="artspanel.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="14" />
+            <state vertical-scroll-proportion="-5.625">
+              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -171,7 +167,6 @@
         <option value="$PROJECT_DIR$/WebProjectSym2.8/web/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/managehours.html.twig" />
-        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/adminpanel.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Arts.php" />
@@ -186,7 +181,6 @@
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/Uren.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Tests/Controller/AdminControllerTest.php" />
-        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/deleteappointments.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/afspraakdetals.html" />
@@ -197,6 +191,8 @@
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig" />
+        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig" />
+        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/base.html.twig" />
       </list>
     </option>
   </component>
@@ -1046,26 +1042,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.125">
-          <caret line="76" column="87" selection-start-line="76" selection-start-column="87" selection-end-line="76" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/makereservation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.75">
           <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1139,11 +1119,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51508623">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state vertical-scroll-proportion="-4.2916665">
+          <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
           <folding>
             <element signature="e#119#145#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.625">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
