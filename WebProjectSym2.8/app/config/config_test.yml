@@ -25,4 +25,4 @@ doctrine:
       host:     127.0.0.1
       dbname:   WebProjectDb
       user:     root
-      password: pxl
+      password: null
