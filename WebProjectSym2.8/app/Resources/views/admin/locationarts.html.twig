@@ -12,24 +12,28 @@
             <th>Lokaal Nummer </th>
             <th>Lokaal Adres</th>
             <th>Locatie Wijzigen</th>
+            <th>Acties</th>
         </tr>
         {% for arts in artsen %}
             <tr>
             <td>
             {{ arts.getNaam() }}  {{ arts.getActhernaam() }}
             </td>
+                {% set locatieBool = false %}
+                {% for locatie in locaties %}
 
-                    {% for locatie in locaties %}
-
-                        {%  if (arts.getLocatieid() == locatie) %}
-                            <td>{{ locatie.getId() }} </td>
-                            <td> {{ locatie.getLokaal() }}</td>
-                            <td>   {{ locatie.getAdres() }}</td>
-                        {%  elseif (arts.getLocatieid() == null) %}
-                            <td tabindex="1"></td>
-                            <td tabindex="2"> </td>
-                            {% endif %}
-                    {% endfor %}
+                    {%  if (arts.getLocatieid() == locatie) %}
+                        <td>{{ locatie.getId() }} </td>
+                        <td> {{ locatie.getLokaal() }}</td>
+                        <td>   {{ locatie.getAdres() }}</td>
+                        {% set locatieBool = true %}
+                    {%  endif %}
+                {% endfor %}
+                {% if locatieBool != true %}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endif %}
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Locatie

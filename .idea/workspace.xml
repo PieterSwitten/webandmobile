@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e45ba523-79eb-4a3f-a0aa-d06fd004a916" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/afspraakdetails.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/deleteappointments.html.twig" afterPath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/deleteappointments.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig" afterPath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php" afterPath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/ArtsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php" afterPath="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig" afterPath="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig" />
     </list>
     <ignored path="gitrepos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,11 +99,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="afspraken.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="afspraken.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36314654">
-              <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+            <state vertical-scroll-proportion="-17.166666">
+              <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="locationarts.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2262931">
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -153,7 +158,6 @@
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/adminpanel.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/web/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/HomeController.php" />
-        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/managehours.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/arts/artspanel.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/adminpanel.html.twig" />
@@ -180,6 +184,7 @@
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraakdetailspatient.html.twig" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Controller/PatientController.php" />
         <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig" />
+        <option value="$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig" />
       </list>
     </option>
   </component>
@@ -915,13 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.75">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/src/AppBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1130,8 +1128,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/patient/afspraken.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36314654">
-          <caret line="44" column="47" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+        <state vertical-scroll-proportion="-17.166666">
+          <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebProjectSym2.8/app/Resources/views/admin/locationarts.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2262931">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding />
         </state>
       </provider>
