@@ -8,8 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
+use FOS\RestBundle\Controller\FOSRestController;
 
-class HomeController extends Controller
+class HomeController extends FOSRestController
 {
     /**
      * @Route("/", name="homeroute")
