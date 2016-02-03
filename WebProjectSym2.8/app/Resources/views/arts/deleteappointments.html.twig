@@ -56,6 +56,7 @@
                         Selecteer een dag
                     {% elseif bezetBool %}
                         <a href={{ path('artsverwijderafspraakroute', {'afspraakid':afspraakid,'dagindex':index, 'dag':dag}) }}><button class="btn">Verwijderen</button></a>
+                        <a href={{ path('afspraakdetailsroute', {'afspraakid':afspraakid}) }}><button class="btn">Details</button></a>
                     {% else %}
                         <a href={{ path('blokroute', {'uurindex':i,'dagindex':index, 'dag':dag}) }}><button class="btn">blokkeren</button></a>
                     {% endif %}

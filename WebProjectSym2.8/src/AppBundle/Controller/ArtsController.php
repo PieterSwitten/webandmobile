@@ -64,6 +64,17 @@ class ArtsController extends Controller
     }
 
     /**
+     * @Route("/afspraakdetails/{afspraakid}", name="afspraakdetailsroute")
+     */
+    public function afspraakDetailsAction(Request $request, $afspraakid)
+    {
+        $reposUren = $this->getDoctrine()->getRepository('AppBundle:Uren');
+        $uren = $reposUren->find($afspraakid);
+
+        return $this->render('arts/afspraakdetails.html.twig', array('afspraak' => $uren));
+    }
+
+    /**
      * @Route ("/artsprofielbeheerbewerk", name ="artsprofielbewerkroute")
      */
     public function ArtsprofielBeheerBewerkAction(Request $request)
