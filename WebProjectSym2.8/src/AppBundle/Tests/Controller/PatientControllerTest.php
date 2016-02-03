@@ -24,5 +24,22 @@ class PatientControllerTest extends WebTestCase
         $heading = $crawler->filter('h1')->eq(0)->text();
         $this->assertEquals('Welkom!', $heading);
     }
+    public function testIndex() {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/');
 
+
+        $heading = $crawler->filter('h1')->eq(0)->text();
+        $this->assertEquals('Welkom!', $heading);
+    }
+    public function testTeam()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/team');
+
+
+        $heading = $crawler->filter('h1')->eq(0)->text();
+        $this->assertEquals('Teammembers', $heading);
+
+    }
 }

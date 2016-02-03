@@ -58,8 +58,21 @@ class AdminControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('html:contains("Locatie Arts")')->count());
 
     }
+    public function testSecuredLogout()
+    {
+        $this->logIn();
 
-    private function logIn()
+        $crawler = $this->client->request('GET', '/');
+
+
+
+        $this->assertGreaterThan(0, $crawler->filter('html:contains("Welkom!")')->count());
+
+    }
+
+
+
+    public function logIn()
     {
         $session = $this->client->getContainer()->get('session');
 

@@ -3,18 +3,32 @@
 namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
+use Symfony\Component\BrowserKit\Cookie;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class ArtsControllerTest extends WebTestCase
 {
+
     public function testDokterIndex() {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/Index');
-
-
+        $crawler = $client->request('GET',  '/Index');
         $heading = $crawler->filter('h1')->eq(0)->text();
         $this->assertEquals('Dokter paneel', $heading);
+
+
     }
+
+   /* public function testProfielbeheer() {
+        $client = static::createClient();
+        $crawler = $client->request('GET',  '/artsprofielbeheer');
+        $heading = $crawler->filter('h1')->eq(0)->text();
+        $this->assertEquals('Profiel beheer', $heading);
+
+
+    }
+
+
+
 
     public function testUrenRegelen() {
         $client = static::createClient();
@@ -31,8 +45,8 @@ class ArtsControllerTest extends WebTestCase
 
 
         $heading = $crawler->filter('h1')->eq(0)->text();
-        $this->assertEquals('Afspraken verwijderen', $heading);
-    }
+        $this->assertEquals('Afspraken regelen', $heading);
+    }*/
 
 
 }

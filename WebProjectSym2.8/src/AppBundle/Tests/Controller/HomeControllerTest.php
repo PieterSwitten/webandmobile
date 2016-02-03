@@ -26,6 +26,16 @@ class HomeControllerTest extends WebTestCase
         $this->assertEquals('Teammembers', $heading);
 
     }
+    public function testDokters()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/dokterprofielen');
+
+
+        $heading = $crawler->filter('h1')->eq(0)->text();
+        $this->assertEquals('Overzicht dokters', $heading);
+
+    }
 
     public function testLogin() {
         $client = static::createClient();
