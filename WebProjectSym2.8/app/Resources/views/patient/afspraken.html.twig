@@ -73,6 +73,7 @@
                         <a href={{ path('reserverenroute', {'uurindex':i, 'dagindex': index, 'arts':arts}) }}><button class="btn">Reserveren</button></a>
                     {% elseif bezetUser == logedinId %}
                         <a href={{ path('verwijderafspraakroute', {'afspraakid':afspraakid}) }}><button class="btn">Verwijderen</button></a>
+                        <a href={{ path('afspraakdetailpatientsroute', {'afspraakid':afspraakid}) }}><button class="btn">Details</button></a>
                     {% endif %}
                 </td>
             </tr>

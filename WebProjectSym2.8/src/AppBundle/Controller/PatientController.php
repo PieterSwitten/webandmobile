@@ -87,6 +87,17 @@ class PatientController extends Controller {
     }
 
     /**
+     * @Route("/afspraakdetailspatient/{afspraakid}", name="afspraakdetailpatientsroute")
+     */
+    public function afspraakDetailsAction(Request $request, $afspraakid)
+    {
+        $reposUren = $this->getDoctrine()->getRepository('AppBundle:Uren');
+        $uren = $reposUren->find($afspraakid);
+
+        return $this->render('arts/afspraakdetails.html.twig', array('afspraak' => $uren));
+    }
+
+    /**
      * @Route("/reserveer/{uurindex}/{dagindex}/{arts}", name="reserveerroute")
      */
     public function reserveerAction(Request $request, $uurindex, $dagindex, $arts)

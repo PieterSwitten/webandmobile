@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="text-center">Afspraakdetails</h1>
+    </div>
+    <h1>Patient: {{ afspraak.getUserid().getUsername() }}</h1>
+    <h1>Dokter: {{ afspraak.getArtsid().getNaam() ~ ' ' ~ afspraak.getArtsid().getActhernaam() }}</h1>
+    <h2>Datum: {{ afspraak.getDatum() }}</h2>
+    <h3>Symptonen</h3>
+    <p>{{ afspraak.getOpmerkingen() }}</p>
+
+{% endblock %}
