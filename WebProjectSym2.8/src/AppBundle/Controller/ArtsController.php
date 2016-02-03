@@ -133,7 +133,7 @@ class ArtsController extends Controller
     }
 
     /**
-     * @Route("/delete/{afspraakid}/{dagindex}/{dag}", name="artsverwijderafspraakroute")
+     * @Route("/deleteforarts/{afspraakid}/{dagindex}/{dag}", name="artsverwijderafspraakroute")
      */
     public function deleteAppointmentAction(Request $request, $afspraakid, $dagindex, $dag)
     {
@@ -156,7 +156,7 @@ class ArtsController extends Controller
     }
 
     /**
-     * @Route("/reserveer/{uurindex}/{dagindex}/{dag}", name="blokroute")
+     * @Route("/reserveerforarts/{uurindex}/{dagindex}/{dag}", name="blokroute")
      */
     public function blokAction(Request $request, $uurindex, $dagindex, $dag)
     {
