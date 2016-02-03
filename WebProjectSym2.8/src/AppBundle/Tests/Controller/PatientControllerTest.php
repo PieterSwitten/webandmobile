@@ -18,11 +18,11 @@ class PatientControllerTest extends WebTestCase
 
     public function testAfspraakmaken() {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/afspraken');
+        $crawler = $client->request('GET', '/');
 
 
         $heading = $crawler->filter('h1')->eq(0)->text();
-        $this->assertEquals('Afspraak maken', $heading);
+        $this->assertEquals('Welkom!', $heading);
     }
 
 }

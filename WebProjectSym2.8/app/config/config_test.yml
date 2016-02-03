@@ -1,3 +1,8 @@
+security:
+    firewalls:
+        secured_area:
+            http_basic: ~
+
 imports:
     - { resource: config_dev.yml }
 
@@ -14,3 +19,10 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+doctrine:
+   dbal:
+      host:     127.0.0.1
+      dbname:   WebProjectDb
+      user:     root
+      password: pxl
