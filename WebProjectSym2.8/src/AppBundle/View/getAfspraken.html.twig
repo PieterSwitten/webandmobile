@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block body %}
+
+    <div class="jumbotron">
+        <h1 class="text-center">FOSREST Afspraken</h1>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Datum</th>
+            <th>Opmerking</th>
+            <th>Arts id</th>
+            <th>User id</th>
+        </tr>
+        {% for uur in uren %}
+            <tr>
+                <td>{{ uren.id() }}</td>
+                <td>{{ uren.datum() }}</td>
+                <td>{{ uren.opmerkingen() }}</td>
+                <td>{{ uren.artsid() }}</td>
+                <td>{{ uren.userid() }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

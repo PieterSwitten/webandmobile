@@ -69,3 +69,11 @@ swiftmailer:
     spool:     { type: memory }
 
 gregwar_captcha: ~
+fos_rest:
+    routing_loader:
+            default_format: json
+    view:
+            formats:
+                json: true
+                rss: false # removing them will also work
+                xml: false
